@@ -1,0 +1,217 @@
+﻿“Harley” Official Handbook
+
+
+Table of Contents:
+1. Introduction
+2. List of Characters
+3. The map
+4. The gameplay
+5. Dictionary
+6. Story
+7. Credits
+
+
+Introduction
+
+
+        Hello and welcome to the official handbook for Harley, a game made by Jordan Rogers. In this handbook, every character will be introduced, the map will be explained in detail, the gameplay mechanics will be covered, and the story will be presented. So without further ado, let’s begin!
+
+
+List of Characters
+
+
+Anais - The original hero. He led the Three Lords in the war against Zephyr, the dark king. He is a male ferret. His fur is primarily silver, with a shade of gray around his eyes. He has red eyes. 
+
+
+Idimal - One of the Three Lords, he was the one with great strength and wielded the sword Siegrift. He is a male black bear with red stripes around his arms and legs. He has a scar across his left eye and an X shaped scar over his muzzle. He has bright blue eyes as well.
+
+
+Snowinona - One of the Three Lords, she was very intelligent and as such, was unmatched in her skill with magic. She invented many different spells, some of which were Hypernova and Iron Body. She was a female blue wolf with magenta eyes. She has white hearts on her shoulders and a stripe pattern on the back of her left hand.
+
+
+Ordeas - One of the Three Lords, he had great eyesight, and wielded a bow he called Red Eagle. He was a male silver eagle with yellow eyes and a black beak. 
+
+
+Zephyr - The dark king with unimaginable power. He is very evil. He was a male black lion with a red scar over his right eye. His fangs were unusually red, and so were his claws. 
+
+
+Harley - Our protagonist, and a descendent of Anais. He is a male ferret-wolf hybid. He looks very similar to Anais, with some differences, such as eye color and fur patterns. He has blue stripe patterns on his left hand. He has magenta eyes.
+
+
+Mia - Harley’s younger sister. She’s overprotective of her big brother. She is a female ferret-wolf hybrid. She has blue fur with some gray fur around her hands and feet. She has magenta eyes.
+
+
+Sylvanus - Harley and Mia’s father. He is a royal guard for the Anais army. He is a male ferret-wolf hybrid. He has blue fur, with white fur on other parts. He has brown eyes.
+
+
+Winnifred - Harley and Mia’s mother. She mysteriously disappeared one day when Mia was a baby, but Harley finds her in Zephyr’s castle as an assassin. She is a female wolf. She has yellow fur with a white muzzle and belly. She has red eyes.
+
+
+Danny - Harley’s best friend. He is a male red panda. Despite this, all the “red” is green fur. He also has green eyes.
+
+
+Lina - Harley’s childhood friend. She is a female rabbit. She is primarily white, except she has a black tail. She has orange eyes.
+
+
+Taylor - A mysterious Anito who Harley encounters frequently in his journey. He is a male black fox. His fur is black, with a gray muzzle and silver eyes.
+
+
+Nyanko - A black and white kitten that acts as Harley’s companion. Very adorable. He has very strange powers, such as being able to fly, and Harley being the only Anito to be able to see him.
+
+
+Malachai - The blacksmith of Anais, he is a male snow tiger with purple stripes. He has brown eyes, and has a large black hammer. 
+
+
+The Map
+
+
+The game takes place on the continent of Beauvé. Beauvé has six countries; Anais, Snowinona, Ordeas, Idimal, Snowanais, and Flouresca. This country was named Beauvé due to the darkness and evil on the continent turning into a land of pure beauty and diversity after Zephyr’s defeat. Most of the northern section is covered in snow, while the southern portion is filled with warm weather and lush forests. The only desert it has is on the southern portion of Snowanais. Many of the countries are monarchies, however some, like Ordeas and Snowanais, have a different government.
+
+
+Anais is where the original hero is said to have been born. It is a generally grassy area, with many forests and teeming with wildlife. It has 7 towns; Rosebush is its capital, but the largest town it has is Orion City. Rosebush has the Anais Castle, where the current king, King Terrance, resides. It has the largest army in Beauvé. Littleoak Town is a small town that rests right by the Uncharted Sea, and is largely popular due to the many different types of fish that can be caught there. Anais’ most common animal are dogs. Many Anitos have dogs as pets, and are seen as great companions. 
+
+
+        Snowinona, as may have been suggested, is a very snowy area. It is constantly snowing, and the further north you head, the snowier it gets. This is where Snowinona lived after Zephyr was defeated. It is full of large animals such as mammoths and polar bears. It has 4 large cities, with the largest, Frostbite City, being the capital. It is home to the Iceburg Castle, where Queen Bridget II rules. Aside from snow and mammoths, this country is the only known country in the world where the rare Snow Roses grow.
+
+
+        Ordeas is a place full of rivers and lakes. It’s a very wet area, and is famous for the river that runs through it, which is connected to the Uncharted Sea. Ordeas ruled over this area after Zephyr’s defeat. A fun fact is that Ordeas was a very religious man, and turned the country into a theocracy. The country has nine towns. Its capital is Rush City, where the Church of Praema rests. Father Halo is the one who receives and interprets signs from Praema, and as such rules the country. Horseback riding and farming are very huge activities in this country.
+
+
+        Idimal is another snowy place, but it’s not too bad. The southern portion is a grassy area during the Summer. Idimal lived here after Zephyr’s defeat. This country is by far the most technologically advanced out of the six. Many Anitos here have cars and electricity. Interestingly enough, melee weapons are preferred over muskets. This country has 5 cities, the capital being York City. The country is run by King Jestice, who resides in the Ash Castle. 
+
+
+        Snowanais - An island that lies between Anais and Snowinona. It is a strange island. The northern section is even snowier than Snowinona, while the southern section is a desert. It is a democracy, with President Bruton leading the country. Most of the southern portion is uninhabited, with the exception of those who live in Sahara Town, one of Snowanais’ four towns. The capital is Amerus, where the Canvas Building stands. 
+
+
+        Flouresca is an island by Idimal. It is shaped like a flower. It is primarily grassy, with the large northern section covered in roses of many different colors. It only has one very large city, Garden City, with Queen Apple ruling from Nature Castle. Farming is very common in Flouresca, as the soil is very fertile almost everywhere. Flouresca is considered the most beautiful country in the world.
+
+
+        Uncharted Sea - A large sea in the center of Beauvé. No one has ever sailed it and lived. Thus, it has never been charted. All that is known is that Zephyr’s fortress resides in the middle of the sea.
+
+
+The Gameplay
+
+
+        It is an rpg game. The overworld gameplay is top down, with the main character being in the center of the camera except for certain scenes. There are two gameplay scenarios; The overworld scenario and the battle scenario.
+
+
+Controls
+
+
+During the overworld scenario, WASD is used for movement, Spacebar/Left Click is to interact. Esc is to open the pause menu. Shift is to run. Ctrl is to view the item and status menu.
+
+
+        During the battle scenario, WASD is used for movement. W and Spacebar are used for jumping. Esc is to open the pause menu. Left Click is to do the normal attack. Right Click is to do a special attack. Ctrl is to activate your ability. Shift is to counter. Shift+WASD is dodge/roll. 
+
+
+Gameplay Scenarios
+
+
+        During the game, there are two main scenarios: Overworld Scenario and Battle Scenario. During the Overworld Scenario, the camera is focused on the main character as they walk around, exploring the world. This scenario is mostly used for exploration, puzzle solving, and interaction with the environment. There are no random encounters, however enemies will appear as interactable npcs on the overworld. The way to tell the difference between enemies and Anitos are that enemies will have a red outline, whereas passive npcs will have a blue outline. As mentioned, exploration plays a key role in this game, and while not required, exploration leads to several different side missions and dungeons, as well as allows the player to find items that help make the game easier.
+
+
+        Next is the Battle Scenario. If the player fights an enemy, the screen will transition to an arena, similar to that of the Fire Emblem games. Here the player fights in a Super Smash Bros inspired battle style. However things are a bit slower paced, and the goal is to break through enemy defenses and attack whenever possible. Your main hero starts with 100hp. When this reaches 0, it is game over. As the game progresses, the main character can raise their hp to a maximum of 500hp. Enemies’ hp varies, with bosses having significantly higher hp than standard enemies. The hp also varies between difficulty levels. AI is also much different between difficulty levels. In very easy mode, enemies attack rarely, never block or counter, and bosses don’t use special attacks. However in Legend mode, enemies attack frequently, block frequently, making it hard to break their defenses, and try to counter very frequently. Bosses also regenerate their health slowly, and gain a counter ability. 
+
+
+The main character has many different fighting abilities. The normal attack is a basic attack, dealing average amount of damage. Strikes are stronger attacks that occur when the attack button is pressed at the same time as a directional input. These deal more damage, and depending on the main character’s abilites, can stun the enemy. Special attack is an attacked that can be used once the player has landed enough hits. As you proceed through the game, many new special attacks can be used by the player, and each one has different effects, such as healing 50% of your hp or doubling your attack power. The next is a standard block. The block will absorb all damage until the stamina meter runs out, then the player can no longer block until the meter recharges fully. Countering is a very powerful tool if mastered. If a counter is used exactly when an attack is landed, then the attacker will be hit with twice the amount of power that would have been dealt. Every single physical attack can be countered, however magic attack can not be countered!
+
+
+Gameplay Mechanics
+
+
+        There are 5 levels of difficulty. In order, it goes Rookie, Default, Hard, Hero, and Legend
+
+
+        There are 6 different values that the main character is affected by: HP, Stamina, Attack, Defense, Weight, and Resistance. HP stands for Health Percentage. The percentage is shown like this: Current Health/Maximum Health. In the Battle Scenario, if you Current Health reaches 0, it is game over. Stamina is represented by a transparent bar that fills with the particle effect of the player’s choice. Your stamina can not be improved, however the amount used can be increased or decreased by means of equipment. Attack is how much damage the main character deals. This value never changes with the exception of equipment bonuses and certain useable items, which raise or decrease it temporarily. Defense is how much damage the main character takes from a hit from an enemy, Like Attack, this value never changes with the exception of equipment bonuses and certain useable items. Weight is a value that determines how heavy the equipment the main character is wearing. If the weight exceeds the main character’s maximum weight load, then the main character will move slower and attack slower, being more vulnerable. Finally is Resistance. Resistance determines how much damage is received from status ailments and magic attacks. This value applies to equipment only and not the main character. 
+
+
+Abilities
+
+
+Abilities are effects that can be applied to the main character for use in the battle scenario. The main character may obtain many different abilities by means of training, however only one ability may be selected for use during battle, and can only be changed during the overworld scenario. Abilities apply different effects  to the main character, whether it’s health regeneration or faster movement speed. Abilities are much harder to obtain on higher difficulties.
+
+
+Dictionary
+
+
+This will explain the terms used by this guide. 
+
+
+Anito is a term used to describe the characters of the game. The word is a combination of the words “Animal” and “Hito” which is the japanese word for human. So the word literally means “Animal Person.”
+
+
+The Story
+
+
+
+
+        Before the Anitos ruled over planet, it was completely overrun by dragons and monsters. Their leader, Zephyr, was the strongest of them all. His power was so great that his footsteps could cause earthquakes, and with the snap of a finger, he could create vicious thunderstorms all the way across the planet. 
+
+
+        His fortress lay in the middle of the Uncharted Sea in the continent of Beauvé. His fortress was said to be 3 thick walls littered with the strongest soldiers and deadly traps, and a moat inside of it, with his castle residing in the absolute center of everything. His castle is said to have over 30 rooms, with his main chamber being blocked off by a great maze, and the entrance to it being guarded by the Assassin Trio, Zephyr’s strongest and most loyal soldiers.
+
+
+        He ruled over the planet for 178 years, until the first Anito, Anais, fought back. Anais rose a group of three warriors; Idimal, Snowinona, and Ordeas. Idimal’s strength far surpassed many of the monsters, and he could cut down any enemy with his sword, Seigrift. Snowinona’s intelligence allowed her to cast many powerful spells to protect them from harm, among which were her favorite, Hypernova. Ordeas’ great eyesight and his skill with a bow were unmatched, and with his bow, the Red Eagle, he could shoot a monster from over a mile away. 
+
+
+        Anais was the greatest there ever was. He was a brilliant strategist. He could accurately predict when and where an enemy would attack, and the best ways to counter it. He wielded no weapons. His power was called Harley. It all came from his spirit. When he was attack, he would release his spirit to attack, and with one touch, the attacker would fall.
+
+
+        When the four heroes passed the great maze, the Assassin Trio fought them. Idimal, Snowinona, and Ordeas fought them, while Anais entered the chamber. There Anais’ spirit fought against Zephyr’s mighty power in the battle to save the world. After an even battle, Anais defeated the dark king, and sealed his essence in a white orb labeled “ASIO.” After his defeat, all the monsters vanished, and the dragons were forced to hide underground.
+
+
+        Harley is sitting on a tree branch, gazing out into the ocean. It was his favorite thing to do after a hard day of work. He then heard a call from his little sister, Mia, calling him home for dinner. He falls off the tree comedically, and the two head back to their home. Harley gives his sister her plate and they sit at their table to eat, their parents not present. Their father was a guard for the Anais army, so he was only home during holidays, and their mother disappeared long ago. 
+
+
+        The next day is Harley’s birthday, which means he has come of age and as such, he must go to the capital by himself to be given the king’s blessing. Once he gets dressed, his sister makes sure he’s ready by giving him a tutorial. After saying goodbye to her, as well as the people of his town, Harley began the long walk towards the capital. It was a 300 mile walk, so he packed a lot of food and water. He had to follow the Cobble Trail, which led all the way to the capital, so thats where he stuck.
+
+
+        After a few days, the Anais Castle came into sight, however things looked very wrong. There was smoke trailing from the castle, and Harley sensed danger coming from there. He rushed towards Rosebush Town, however as he reached the gates, many soldiers rushed out an attacked the unarmed Harley. These soldiers looked like the standard Anais soldiers, however their faces were heavily shadowed and unrecognizable. Confused, Harley tried to escape, and he barely managed to escape with his life from the soldiers. He retreated into the Rosebush forest, where the soldiers surprisingly didn’t follow him. Wounded and afraid, Harley ran deep into the forest until he collapsed from tiredness.
+
+
+Harley woke up due a mysterious flying kitten nudging him awake. The kitten introduces himself as Nyanko, Harley’s guardian spirit. Harley questions Nyanko about many things, but Nyanko primarily says he doesn’t know. Harley stands, despite his injuries, and insists on going back to the castle, but Nyanko tells him that it’d be better for Harley to go to Amethyst Town. Harley has the choice to either ignore Nyanko’s advice and return to Rosebush, or obey Nyanko and head to Amethyst Town.
+
+
+If Harley returns to Rosebush, Nyanko will be disappointed in Harley’s distrust for him, but sticks close anyway. When they reach the castle, Harley notices that the soldiers are gone, and he walks up to the gates again. However he cant open them because the lever is broken, so it can only be opened from the other side. Nyanko suggests Harley walk around the walls and try to find an entrance.
+
+
+ After some walking, Harley finds a part of the wall thats cracked. Harley barely manages to slip through the crack, while Nyanko just phases through. Harley walks through the dark corridor until he finds a door that takes him into the city.
+
+
+While in the city, Harley walks around, and finds no life at all. Soldiers patrol the area frequently, and Harley heads towards the castle while avoiding them. Once he reaches the castle gates, he finds two larger soldiers guarding the gate. Harley sneaks around them and goes around the castle, but unlike the wall, he couldn’t find a way through. 
+
+
+Harley goes back to the guards, and manages to lure them away by making noises on the other side of the castle. He quickly slips in through the gates, and is now in the castle. The castle had a red carpet leading to the large doors before the Throne Room. Before opening the doors, Harley decides he should get equipment from the barracks.
+
+
+Interestingly, the barracks were empty. Harley looks around and finds a sword. Its a simple sword used by soldiers, nothing too impressive. However right when he’s about to leave, a soldier enters the room. He attacks Harley, and thus the battle scenario is introduced. Nyanko offers a tutorial for this scenario, which can be denied or accepted. 
+
+
+After the battle, Harley returns to the large doors that lead to the throne room. He opens the door and runs in, and finds that the normal king isn’t sitting on the throne, but instead it’s some monster wearing dark purple armor and wields a sword with a black and purple hilt. Harley is instantly seized by the soldiers in the room, and is taken into the prison. 
+
+
+While in the prison, Harley managed to pick the lock and escape. Since his sword is gone, he can either go get another one at the barracks, or escape Rosebush. Either way, once out the gates, Nyanko tells Harley that he should now go to Amethyst. Having no other options, Harley heads for Amethyst town.
+
+
+If Harley had decided to go straight to Amethyst town, none of this would have happened.
+
+
+Upon arriving, Nyanko tells Harley to seek the blacksmith and explain the situation at Rosebush. Harley finds a blacksmith named Malachai. Harley explains everything that was going on at Rosebush. Surprisingly, Malachai believes him. Malachai reveals a prophecy that goes, “The king will rise when the hero is reborn.” Malachai then explains how Harley looks remarkably similar to Anais. Harley denies this, and if Harley decided to go back to Rosebush, Nyanko will agree with Harley, as the hero wasn’t as stubborn as him. 
+
+
+Malachai tells Harley that he believes the Dark King is returning. He instructs Harley to head to the Ancient Anais Ruins and traverse the ruins, as deep inside there are the blueprints to build the ancient weapon wielded by Idimal. Harley asks why Idimal’s weapon if the Dark King was slain by Anais, to which Malachai responds that Anais didn’t have any weapons. He had a special kind of power that no blueprint could recreate.
+
+
+Malachai marks Harley’s map where the ruins are, and gives him a sword if Harley didn’t already have one. Harley says his goodbyes and heads to the ruins. It was a fairly long walk, and as he walks Nyanko leaves some comedic bits with Harley.
+
+
+When he arrives at the ruins, they are attacked by monsters. After defeating them, Harley finds a ladder that leads deeper into the ruins. As Harley traversed deeper into the ruins, he finds many journal entries that reveal the origins of the ruins, as well as why the blueprints were left here. 
+
+
+Once Harley reaches the last chamber, he finds the blueprints, however once he takes them, the two black knight statues come to life and attack Harley. These two fight together, and Harley needed to think differently to take on these two than he would normally use on any other enemy.
+
+
+Harley defeats the knights and finds a hidden exit in the room that leads back to the surface. He returns to Amethyst and gives the blueprint to Malachai. Malachai goes over the blueprints, then shakes his head. He tells Harley that he can’t do this alone. He tells Harley that he needs the three other blacksmiths from the other countries to help him. He also explains that the weapon can only be forged using the titanium anvil on the top of Olympus Peak. 
+
+
+Malachai instructs Harley that the other blacksmiths are Stefan from Idimal, Andre of Snowinona, and Rascal of Ordeas. Harley decides to find the blacksmiths. Harley and Malachai shake hands, and Harley leaves Amethyst, thus concluding the first chapter.
