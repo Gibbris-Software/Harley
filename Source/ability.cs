@@ -1,3 +1,7 @@
-abstract class Ability{
-    /* To be implemented. */
+namespace Harley
+{
+    abstract class Ability
+    {
+        /* To be implemented. */
+    }
 }
