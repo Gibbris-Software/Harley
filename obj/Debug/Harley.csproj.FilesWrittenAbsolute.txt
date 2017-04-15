@@ -9,3 +9,4 @@
 /home/john/Documents/Idigame/Harley/obj/Debug/Harley.exe.mdb
 /home/john/Documents/Idigame/Harley/obj/Debug/Harley.gtk-gui.gui.stetic
 /home/john/Documents/Idigame/Harley/bin/Debug/Resources/anais.png
+/home/john/Documents/Idigame/Harley/bin/Debug/Resources/anais.map

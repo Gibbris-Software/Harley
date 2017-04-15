@@ -6,10 +6,12 @@ namespace Harley
 	public class Battle : ISituation
 	{
 		private Tileset Tiles;
+		private Map Map;
 
 		public Battle ()
 		{
 			Tiles = new Tileset ("Resources/anais.png");
+			Map = new Map ("Resources/anais.map");
 		}
 
 		public void Redraw(Cairo.Context cr, Player player)
@@ -19,7 +21,7 @@ namespace Harley
 
 			for (int i = 0; i < 20; i++) {
 				for (int j = 0; j < 15; j++) {
-					Tile tile = Tiles.Tile (0);
+					Tile tile = Tiles.Tile (Map.Tile (i, j));
 					cr.Rectangle (i * 16, j * 16, 16, 16);
 					cr.SetSourceSurface(tile.Surface, i*16, j*16);
 					cr.Fill ();
