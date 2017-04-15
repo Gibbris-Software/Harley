@@ -1,0 +1,18 @@
+﻿<Properties StartupItem="Harley.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="gtk-gui/generated.cs">
+    <Files>
+      <File FileName="Source/Harley.cs" Line="23" Column="24" />
+      <File FileName="Source/Player.cs" Line="21" Column="3" />
+      <File FileName="VideoGameStory.txt" Line="124" Column="9" />
+      <File FileName="Source/Attack.cs" Line="7" Column="2" />
+      <File FileName="gtk-gui/generated.cs" Line="38" Column="3" />
+      <File FileName="Source/Battle.cs" Line="16" Column="4" />
+      <File FileName="Source/ISituation.cs" Line="8" Column="36" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

@@ -1,0 +1,10 @@
+/home/john/Documents/Idigame/Harley/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/john/Documents/Idigame/Harley/bin/Debug/Harley.dll.mdb
+/home/john/Documents/Idigame/Harley/bin/Debug/Harley.dll
+/home/john/Documents/Idigame/Harley/obj/Debug/Harley.dll
+/home/john/Documents/Idigame/Harley/obj/Debug/Harley.dll.mdb
+/home/john/Documents/Idigame/Harley/bin/Debug/Harley.exe.mdb
+/home/john/Documents/Idigame/Harley/bin/Debug/Harley.exe
+/home/john/Documents/Idigame/Harley/obj/Debug/Harley.exe
+/home/john/Documents/Idigame/Harley/obj/Debug/Harley.exe.mdb
+/home/john/Documents/Idigame/Harley/obj/Debug/Harley.gtk-gui.gui.stetic

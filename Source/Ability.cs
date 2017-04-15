@@ -1,6 +1,6 @@
 namespace Harley
 {
-    abstract class Ability
+    public abstract class Ability
     {
         /* To be implemented. */
     }
