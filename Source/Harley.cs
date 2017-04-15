@@ -27,6 +27,8 @@ namespace Harley
 
 			CurrentPlayer = new Player ();
 
+			GLib.Timeout.Add (33, new GLib.TimeoutHandler (SetRedraw));
+
 			Show();
 		}
 
@@ -43,6 +45,31 @@ namespace Harley
 				BattleSituation.Redraw (cr, CurrentPlayer);
 			}
 			return base.OnDrawn (cr);
+		}
+
+		protected override bool OnKeyPressEvent (Gdk.EventKey evnt)
+		{
+			switch (evnt.Key) {
+			case Gdk.Key.w:
+				CurrentPlayer.MoveUp ();
+				break;
+			case Gdk.Key.a:
+				CurrentPlayer.MoveLeft ();
+				break;
+			case Gdk.Key.s:
+				CurrentPlayer.MoveDown ();
+				break;
+			case Gdk.Key.d:
+				CurrentPlayer.MoveRight ();
+				break;
+			}
+
+			return base.OnKeyPressEvent (evnt);
+		}
+
+		public bool SetRedraw(){
+			QueueDraw ();
+			return true;
 		}
 	}
 }

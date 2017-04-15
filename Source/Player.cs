@@ -84,5 +84,21 @@ namespace Harley
 		{
 			/* To be implemented. */
 		}
+
+		public void MoveRight(){
+			battle_x += 1;
+		}
+
+		public void MoveLeft(){
+			battle_x -= 1;
+		}
+
+		public void MoveUp(){
+			battle_y -= 1;
+		}
+
+		public void MoveDown(){
+			battle_y += 1;
+		}
 	}
 }
