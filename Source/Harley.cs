@@ -14,7 +14,7 @@ namespace Harley
 
 		public Harley () : base("Center")
 		{
-			SetDefaultSize (640, 480);
+			SetDefaultSize (320, 230);
 			SetPosition (WindowPosition.Center);
 
 			DeleteEvent += delegate {

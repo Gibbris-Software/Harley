@@ -5,15 +5,26 @@ namespace Harley
 {
 	public class Battle : ISituation
 	{
+		private Tileset Tiles;
+
 		public Battle ()
 		{
+			Tiles = new Tileset ("Resources/anais.png");
 		}
 
 		public void Redraw(Cairo.Context cr, Player player)
 		{
-			cr.SetSourceRGB (0.25, 0.75, 0.0);
+			//cr.Scale (2, 2);
+			cr.Antialias = Cairo.Antialias.None;
 
-			cr.Paint ();
+			for (int i = 0; i < 20; i++) {
+				for (int j = 0; j < 15; j++) {
+					Tile tile = Tiles.Tile (0);
+					cr.Rectangle (i * 16, j * 16, 16, 16);
+					cr.SetSourceSurface(tile.Surface, i*16, j*16);
+					cr.Fill ();
+				}
+			}
 
 			cr.Arc (player.BattleX * 16 + 8, player.BattleY * 16 + 8, 8, 0, Math.PI * 2);
 

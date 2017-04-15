@@ -50,6 +50,8 @@
     <Compile Include="Source\Ability.cs" />
     <Compile Include="Source\Attack.cs" />
     <Compile Include="Source\HealthRegenAbility.cs" />
+    <Compile Include="Source\Tile.cs" />
+    <Compile Include="Source\Map.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="cairo-sharp, Version=1.10.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
@@ -79,5 +81,10 @@
     <EmbeddedResource Include="gtk-gui\gui.stetic">
       <LogicalName>gui.stetic</LogicalName>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\anais.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
