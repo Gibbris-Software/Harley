@@ -31,9 +31,9 @@ namespace Harley
 			int width = surface.Width / 16;
 			int height = surface.Height / 16;
 			tiles = new List<Tile> ();
-			for (int i = 0; i < width; i++) {
-				for (int j = 0; j < height; j++) {
-					tiles.Add (new Tile (surface, i, j));
+			for (int i = 0; i < height; i++) {
+				for (int j = 0; j < width; j++) {
+					tiles.Add (new Tile (surface, j, i));
 				}
 			}
 		}

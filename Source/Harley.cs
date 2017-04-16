@@ -12,9 +12,9 @@ namespace Harley
 		private Player CurrentPlayer;
 		private int CurrentSituation;
 
-		public Harley () : base("Center")
+		public Harley () : base("Harley")
 		{
-			SetDefaultSize (320, 230);
+			SetDefaultSize (320, 240);
 			SetPosition (WindowPosition.Center);
 
 			DeleteEvent += delegate {
@@ -28,6 +28,8 @@ namespace Harley
 			CurrentPlayer = new Player ();
 
 			GLib.Timeout.Add (33, new GLib.TimeoutHandler (SetRedraw));
+
+			SetSizeRequest (320, 240);
 
 			Show();
 		}
