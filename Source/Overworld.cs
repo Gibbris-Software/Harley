@@ -1,9 +1,8 @@
 ﻿using System;
-using Gtk;
 
 namespace Harley
 {
-	public class Battle : ISituation
+	public class Overworld : ISituation
 	{
 		private Tileset tiles;
 		private Map map;
@@ -16,7 +15,7 @@ namespace Harley
 
 		private int speed;
 
-		public Battle (Player player)
+		public Overworld (Player player)
 		{
 			tiles = new Tileset ("Resources/anais.png");
 			map = new Map ("Resources/anais.map");
@@ -25,6 +24,7 @@ namespace Harley
 			movingUp = false;
 			movingLeft = false;
 			movingDown = false;
+			speed = 3;
 		}
 
 		public void Redraw(Cairo.Context cr)
@@ -41,7 +41,7 @@ namespace Harley
 				}
 			}
 
-			cr.Arc (character.BattleX, character.BattleY, 8, 0, Math.PI * 2);
+			cr.Arc (character.TileX, character.TileY, 8, 0, Math.PI * 2);
 
 			cr.SetSourceRGB (0.1, 0.2, 0.75);
 			cr.Fill ();
@@ -106,15 +106,15 @@ namespace Harley
 
 		public void Update(){
 			if (movingUp) {
-				character.MoveUpBattle (speed);
+				character.MoveUpTile (speed);
 			} else if (movingDown) {
-				character.MoveDownBattle (speed);
+				character.MoveDownTile (speed);
 			}
 
 			if (movingRight) {
-				character.MoveRightBattle (speed);
+				character.MoveRightTile (speed);
 			} else if (movingLeft) {
-				character.MoveLeftBattle (speed);
+				character.MoveLeftTile (speed);
 			}
 		}
 	}

@@ -27,36 +27,36 @@ namespace Harley
 			defence = 5;
 			weight = 9;
 			max_weight_load = 0;
-			tile_x = 4;
-			tile_y = 4;
-			battle_x = 4;
-			battle_y = 4;
+			tile_x = 40;
+			tile_y = 40;
+			battle_x = 40;
+			battle_y = 40;
 			ability = new HealthRegenAbility ();
 			special_attack = new SpecialAttack ();
 		}
 
 
-		public void attack()
+		public void Attack()
 		{
 			/* To be implemented. */
 		}
 
-		public void strike()
+		public void Strike()
 		{
 			/* To be implemented. */
 		}
 
-		public void special()
+		public void Special()
 		{
 			/* To be implemented. */
 		}
 
-		public void block()
+		public void Block()
 		{
 			/* To be implemented. */
 		}
 
-		public void dealdamage(int damage)
+		public void DealDamage(int damage)
 		{
 			/* To be implemented. */
 		}
@@ -80,25 +80,50 @@ namespace Harley
 			get { return battle_y; }
 		}
 
-		public void startBattle()
+		public int TileX
+		{
+			get { return tile_x; }
+		}
+
+		public int TileY {
+			get { return tile_y; }
+		}
+
+		public void StartBattle()
 		{
 			/* To be implemented. */
 		}
 
-		public void MoveRight(){
-			battle_x += 1;
+		public void MoveRightBattle(int distance){
+			battle_x += distance;
 		}
 
-		public void MoveLeft(){
-			battle_x -= 1;
+		public void MoveLeftBattle(int distance){
+			battle_x -= distance;
 		}
 
-		public void MoveUp(){
-			battle_y -= 1;
+		public void MoveUpBattle(int distance){
+			battle_y -= distance;
 		}
 
-		public void MoveDown(){
-			battle_y += 1;
+		public void MoveDownBattle(int distance){
+			battle_y += distance;
+		}
+
+		public void MoveRightTile(int distance){
+			tile_x += distance;
+		}
+
+		public void MoveLeftTile(int distance){
+			tile_x -= distance;
+		}
+
+		public void MoveUpTile(int distance){
+			tile_y -= distance;
+		}
+
+		public void MoveDownTile(int distance){
+			tile_y += distance;
 		}
 	}
 }

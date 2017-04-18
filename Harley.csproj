@@ -52,6 +52,7 @@
     <Compile Include="Source\HealthRegenAbility.cs" />
     <Compile Include="Source\Tile.cs" />
     <Compile Include="Source\Map.cs" />
+    <Compile Include="Source\Overworld.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="cairo-sharp, Version=1.10.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">

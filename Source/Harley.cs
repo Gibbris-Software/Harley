@@ -5,12 +5,10 @@ namespace Harley
 {
 	public class Harley : Window
 	{
-		private static int BATTLE = 1;
-		private static int OVERWORLD = 0;
 		private ISituation BattleSituation;
 		private ISituation Overworld;
 		private Player CurrentPlayer;
-		private int CurrentSituation;
+		private ISituation CurrentSituation;
 
 		public Harley () : base("Harley")
 		{
@@ -21,13 +19,15 @@ namespace Harley
 				Application.Quit ();
 			};
 
-			BattleSituation = new Battle ();
-
-			CurrentSituation = BATTLE;
 
 			CurrentPlayer = new Player ();
 
-			GLib.Timeout.Add (33, new GLib.TimeoutHandler (SetRedraw));
+			BattleSituation = new Battle (CurrentPlayer);
+			Overworld = new Overworld (CurrentPlayer);
+
+			CurrentSituation = Overworld;
+
+			GLib.Timeout.Add (33, new GLib.TimeoutHandler (Update));
 
 			SetSizeRequest (320, 240);
 
@@ -43,9 +43,7 @@ namespace Harley
 
 		protected override bool OnDrawn (Cairo.Context cr)
 		{
-			if (CurrentSituation == BATTLE) {
-				BattleSituation.Redraw (cr, CurrentPlayer);
-			}
+			CurrentSituation.Redraw (cr);
 			return base.OnDrawn (cr);
 		}
 
@@ -53,23 +51,44 @@ namespace Harley
 		{
 			switch (evnt.Key) {
 			case Gdk.Key.w:
-				CurrentPlayer.MoveUp ();
+				CurrentSituation.StartUp ();
 				break;
 			case Gdk.Key.a:
-				CurrentPlayer.MoveLeft ();
+				CurrentSituation.StartLeft ();
 				break;
 			case Gdk.Key.s:
-				CurrentPlayer.MoveDown ();
+				CurrentSituation.StartDown ();
 				break;
 			case Gdk.Key.d:
-				CurrentPlayer.MoveRight ();
+				CurrentSituation.StartRight ();
 				break;
 			}
 
 			return base.OnKeyPressEvent (evnt);
 		}
 
-		public bool SetRedraw(){
+		protected override bool OnKeyReleaseEvent (Gdk.EventKey evnt)
+		{
+			switch (evnt.Key) {
+			case Gdk.Key.w:
+				CurrentSituation.StopUp ();
+				break;
+			case Gdk.Key.a:
+				CurrentSituation.StopLeft ();
+				break;
+			case Gdk.Key.s:
+				CurrentSituation.StopDown ();
+				break;
+			case Gdk.Key.d:
+				CurrentSituation.StopRight ();
+				break;
+			}
+
+			return base.OnKeyPressEvent (evnt);
+		}
+
+		public bool Update(){
+			CurrentSituation.Update ();
 			QueueDraw ();
 			return true;
 		}
