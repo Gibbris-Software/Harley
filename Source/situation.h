@@ -8,17 +8,17 @@ namespace Harley
 	class Situation
 	{
       public:
-		virtual void redraw(SDL_Renderer);
-		virtual void startLeft();
-		virtual void startRight();
-		virtual void startUp();
-		virtual void startDown();
-		virtual void stopLeft();
-		virtual void stopRight();
-		virtual void stopUp();
-		virtual void stopDown();
-		virtual void update();
-	}
+		virtual void redraw(SDL_Renderer*) = 0;
+		virtual void startLeft() = 0;
+		virtual void startRight() = 0;
+		virtual void startUp() = 0;
+		virtual void startDown() = 0;
+		virtual void stopLeft() = 0;
+		virtual void stopRight() = 0;
+		virtual void stopUp() = 0;
+		virtual void stopDown() = 0;
+		virtual void update(Uint32) = 0;
+	};
 }
 
 #endif // __SITUATION_H

@@ -1,122 +1,97 @@
-﻿using System;
+﻿#include <SDL2/SDL.h>
+#include "overworld.h"
 
 namespace Harley
 {
-	public class Overworld : ISituation
-	{
-		private Tileset tiles;
-		private Map map;
-		private Player character;
+	Overworld::Overworld (Player* player, SDL_Renderer* renderer)
+    {
+        tiles = new Tileset ("Resources/anais.png", renderer);
+        map = new Map ("Resources/anais.map");
+        character = player;
+        movingRight = false;
+        movingUp = false;
+        movingLeft = false;
+        movingDown = false;
+        speed = 3;
+    }
 
-		private bool movingRight;
-		private bool movingLeft;
-		private bool movingUp;
-		private bool movingDown;
+    void Overworld::redraw(SDL_Renderer* renderer)
+    {
+        SDL_RenderClear(renderer);
+        for (int i = 0; i < 20; i++) {
+        	for (int j = 0; j < 15; j++) {
+        		int tile = map->tileAt(i, j);
+                tiles->renderTile(tile, i, j, renderer);
+        	}
+        }
+    }
+    
+    void Overworld::startUp(){
+        movingUp = true;
+        movingDown = false;
+        if (movingLeft || movingRight) {
+            speed = 2;
+        }
+    }
 
-		private int speed;
+    void Overworld::startDown(){
+        movingDown = true;
+        movingUp = false;
+        if (movingLeft || movingRight) {
+            speed = 2;
+        }
+    }
 
-		public Overworld (Player player)
-		{
-			tiles = new Tileset ("Resources/anais.png");
-			map = new Map ("Resources/anais.map");
-			character = player;
-			movingRight = false;
-			movingUp = false;
-			movingLeft = false;
-			movingDown = false;
-			speed = 3;
-		}
+    void Overworld::startLeft(){
+        movingLeft = true;
+        movingRight = false;
+        if (movingUp || movingDown) {
+            speed = 2;
+        }
+    }
 
-		public void Redraw(Cairo.Context cr)
-		{
-			//cr.Scale (2, 2);
-			cr.Antialias = Cairo.Antialias.None;
+    void Overworld::startRight ()
+    {
+        movingRight = true;
+        movingLeft = false;
+        if (movingUp || movingDown) {
+            speed = 2;
+        }
+    }
 
-			for (int i = 0; i < 20; i++) {
-				for (int j = 0; j < 15; j++) {
-					Tile tile = tiles.Tile (map.Tile (i, j));
-					cr.Rectangle (i * 16, j * 16, 16, 16);
-					cr.SetSourceSurface(tile.Surface, i*16, j*16);
-					cr.Fill ();
-				}
-			}
+    void Overworld::stopUp(){
+        movingUp = false;
+        speed = 3;
+    }
 
-			cr.Arc (character.TileX, character.TileY, 8, 0, Math.PI * 2);
+    void Overworld::stopDown(){
+        movingDown = false;
+        speed = 3;
+    }
 
-			cr.SetSourceRGB (0.1, 0.2, 0.75);
-			cr.Fill ();
+    void Overworld::stopLeft(){
+        movingLeft = false;
+        speed = 3;
+    }
 
-			((IDisposable) cr.GetTarget()).Dispose();
-			((IDisposable) cr).Dispose();
-		}
+    void Overworld::stopRight ()
+    {
+        movingRight = false;
+        speed = 3;
+    }
 
-		public void StartUp(){
-			movingUp = true;
-			movingDown = false;
-			if (movingLeft || movingRight) {
-				speed = 2;
-			}
-		}
+    void Overworld::update(Uint32 time){
+        if (movingUp) {
+            character->moveUpTile (speed);
+        } else if (movingDown) {
+            character->moveDownTile (speed);
+        }
 
-		public void StartDown(){
-			movingDown = true;
-			movingUp = false;
-			if (movingLeft || movingRight) {
-				speed = 2;
-			}
-		}
-
-		public void StartLeft(){
-			movingLeft = true;
-			movingRight = false;
-			if (movingUp || movingDown) {
-				speed = 2;
-			}
-		}
-
-		public void StartRight ()
-		{
-			movingRight = true;
-			movingLeft = false;
-			if (movingUp || movingDown) {
-				speed = 2;
-			}
-		}
-
-		public void StopUp(){
-			movingUp = false;
-			speed = 3;
-		}
-
-		public void StopDown(){
-			movingDown = false;
-			speed = 3;
-		}
-
-		public void StopLeft(){
-			movingLeft = false;
-			speed = 3;
-		}
-
-		public void StopRight ()
-		{
-			movingRight = false;
-			speed = 3;
-		}
-
-		public void Update(){
-			if (movingUp) {
-				character.MoveUpTile (speed);
-			} else if (movingDown) {
-				character.MoveDownTile (speed);
-			}
-
-			if (movingRight) {
-				character.MoveRightTile (speed);
-			} else if (movingLeft) {
-				character.MoveLeftTile (speed);
-			}
-		}
-	}
+        if (movingRight) {
+            character->moveRightTile (speed);
+        } else if (movingLeft) {
+            character->moveLeftTile (speed);
+        }
+    }
 }
 

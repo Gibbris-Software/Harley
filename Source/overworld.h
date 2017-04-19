@@ -1,7 +1,8 @@
-#ifndef __BATTLE_H_
-#define __BATTLE_H_
+#ifndef __OVERWORLD_H_
+#define __OVERWORLD_H_
 
 #include <string>
+#include <SDL2/SDL.h>
 
 #include "situation.h"
 #include "tile.h"
@@ -9,7 +10,7 @@
 #include "player.h"
 
 namespace Harley {
-    class Battle : public Situation {
+    class Overworld : public Situation {
         Tileset *tiles;
         Map *map;
         Player *character;
@@ -22,7 +23,7 @@ namespace Harley {
         int speed;
       
       public:
-        Battle(Player*, std::string, SDL_Renderer*);
+        Overworld(Player*, SDL_Renderer*);
         void redraw(SDL_Renderer*);
 		void startLeft();
 		void startRight();
@@ -36,4 +37,4 @@ namespace Harley {
     };
 }       
 
-#endif // __BATTLE_H_
+#endif // __OVERWORLD_H_

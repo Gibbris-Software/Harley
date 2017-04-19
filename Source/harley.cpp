@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 
 #include "harley.h"
 #include "situation.h"
@@ -11,18 +12,21 @@ namespace Harley
 {
     Harley::Harley(){
         SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO);
+        IMG_Init(IMG_INIT_PNG);
         window = SDL_CreateWindow("Harley", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, 0);
-        surface = SDL_GetWindowSurface(window);
+        renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
+        SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, 0);
+        SDL_RenderSetScale(renderer, 2, 2);
 
         currentPlayer = new Player ();
 
-        battle = new Battle (currentPlayer);
-        overworld = new Overworld (currentPlayer);
+        battle = new Battle (&(*currentPlayer), "anais", &(*renderer));
+        overworld = new Overworld (&(*currentPlayer), &(*renderer));
 
         currentSituation = overworld;
     }
 
-    Harley::mainloop(){
+    void Harley::mainloop(){
         SDL_Event e;
         bool running = true;
         Uint32 startTime;
@@ -41,49 +45,51 @@ namespace Harley
                         break;
                 }
             }
-            currentSituation.update(SDL_GetTicks() - startTime);
-            currentSituation.redraw(surface);
-            SDL_UpdateWindowSurface(window);
+            currentSituation->update(SDL_GetTicks() - startTime);
+            currentSituation->redraw(renderer);
+            SDL_RenderPresent(renderer);
         }
     }
     
-    Harley::onKeyDown(SDL_KeyEvent event){
+    void Harley::handleKeyDown(SDL_KeyboardEvent event){
         switch(event.keysym.sym){
             case SDLK_w:
-                currentSituation.startUp();
+                currentSituation->startUp();
                 break;
             case SDLK_s:
-                currentSituation.startDown();
+                currentSituation->startDown();
                 break;
             case SDLK_a:
-                currentSituation.startLeft();
+                currentSituation->startLeft();
                 break;
             case SDLK_d:
-                currentSituation.startRight();
+                currentSituation->startRight();
                 break;
         }
     }
     
-    Harley::onKeyUp(SDL_KeyEvent event){
+    void Harley::handleKeyUp(SDL_KeyboardEvent event){
         switch(event.keysym.sym){
             case SDLK_w:
-                currentSituation.stopUp();
+                currentSituation->stopUp();
                 break;
             case SDLK_s:
-                currentSituation.stopDown();
+                currentSituation->stopDown();
                 break;
             case SDLK_a:
-                currentSituation.stopLeft();
+                currentSituation->stopLeft();
                 break;
             case SDLK_d:
-                currentSituation.stopRight();
+                currentSituation->stopRight();
                 break;
         }
     }
     
-    Harley::quit(){
+    void Harley::quit(){
+        SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
         delete overworld;
         delete currentPlayer;
         delete battle;
+    }
 }

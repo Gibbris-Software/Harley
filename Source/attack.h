@@ -6,7 +6,7 @@ namespace Harley
     class SpecialAttack
     {
         /* To be implemented. */
-    }
+    };
 }
 
 #endif // __ATTACK_H_

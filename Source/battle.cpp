@@ -4,9 +4,9 @@
 
 namespace Harley
 {
-    Battle::Battle (Player player, std::string where)
+    Battle::Battle (Player *player, std::string where, SDL_Renderer* renderer)
     {
-        tiles = new Tileset ("Resources/anais.png");
+        tiles = new Tileset ("Resources/anais.png", renderer);
         map = new Map ("Resources/anais.map");
         character = player;
         movingRight = false;
@@ -15,27 +15,16 @@ namespace Harley
         movingDown = false;
     }
 
-    Battle::redraw(SDL_Renderer renderer)
+    void Battle::redraw(SDL_Renderer* renderer)
     {
-        //cr.Scale (2, 2);
-        //cr.Antialias = Cairo.Antialias.None;
-
-        //for (int i = 0; i < 20; i++) {
-        //    for (int j = 0; j < 15; j++) {
-        //        Tile tile = tiles.Tile (map.Tile (i, j));
-        //        cr.Rectangle (i * 16, j * 16, 16, 16);
-        //        cr.SetSourceSurface(tile.Surface, i*16, j*16);
-        //        cr.Fill ();
-        //    }
-        //}
-
-        //cr.Arc (character.BattleX, character.BattleY, 8, 0, Math.PI * 2);
-
-        //cr.SetSourceRGB (0.1, 0.2, 0.75);
-        //cr.Fill ();
-
-        //((IDisposable) cr.GetTarget()).Dispose();
-        //((IDisposable) cr).Dispose();
+        SDL_RenderClear(renderer);
+        for (int i = 0; i < 20; i++) {
+        	for (int j = 0; j < 15; j++) {
+        		int tile = map->tileAt(i, j);
+                tiles->renderTile(tile, i, j, renderer);
+        	}
+        }
+        
     }
 
     void Battle::startUp(){
@@ -92,17 +81,17 @@ namespace Harley
         speed = 3;
     }
 
-    void Battle::update(){
+    void Battle::update(Uint32 time){
         if (movingUp) {
-            character.moveUpBattle (speed);
+            character->moveUpBattle (speed);
         } else if (movingDown) {
-            character.moveDownBattle (speed);
+            character->moveDownBattle (speed);
         }
 
         if (movingRight) {
-            character.moveRightBattle (speed);
+            character->moveRightBattle (speed);
         } else if (movingLeft) {
-            character.m (speed);
+            character->moveLeftBattle (speed);
         }
     }
 }

@@ -1,46 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#include "tile.h"
+#include "constants.h"
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 
 namespace Harley
 {
-	public class Tile
-	{
-		private Cairo.Surface tile;
-		public Tile(Cairo.Surface surface, int x, int y)
-		{
-			tile = new Cairo.ImageSurface (Cairo.Format.ARGB32, 16, 16);
-			Cairo.Context cr = new Cairo.Context (tile);
-			cr.Translate (-x * 16, -y * 16);
-			cr.Antialias = Cairo.Antialias.None;
-			cr.SetSourceSurface (surface, 0, 0);
+	Tileset::Tileset (std::string location, SDL_Renderer* renderer)
+    {
+        SDL_Surface *surface = IMG_Load(location.c_str());
+        width = surface->w / TILE_SIZE;
+        height = surface->w / TILE_SIZE;
+        sheet = SDL_CreateTextureFromSurface(renderer, surface);
+        SDL_FreeSurface(surface);
+    }
 
-			cr.Paint ();
-		}
-
-		public Cairo.Surface Surface {
-			get { return tile; }
-		}
-	}
-
-	public class Tileset
-	{
-		private List<Tile> tiles;
-		public Tileset (string location)
-		{
-			Cairo.ImageSurface surface = new Cairo.ImageSurface (location);
-			int width = surface.Width / 16;
-			int height = surface.Height / 16;
-			tiles = new List<Tile> ();
-			for (int i = 0; i < height; i++) {
-				for (int j = 0; j < width; j++) {
-					tiles.Add (new Tile (surface, j, i));
-				}
-			}
-		}
-
-		public Tile Tile(int which){
-			return tiles[which];
-		}
-	}
+    void Tileset::renderTile(int which, int x, int y, SDL_Renderer* renderer){
+        int tx = which % width;
+        int ty = which / height;
+        SDL_Rect clip = {tx * TILE_SIZE, ty * TILE_SIZE, TILE_SIZE, TILE_SIZE};
+        SDL_Rect draw = {x*TILE_SIZE, y*TILE_SIZE, TILE_SIZE, TILE_SIZE};
+        
+        SDL_RenderCopy(renderer, sheet, &clip, &draw);
+    }
 }
 
