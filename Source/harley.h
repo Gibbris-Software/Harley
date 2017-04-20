@@ -1,7 +1,7 @@
 #ifndef __HARLEY_H_
 #define __HARLEY_H_
 
-#include <SDL2/SDL.h>
+#include "sdl_include.h"
 
 #include "player.h"
 #include "situation.h"

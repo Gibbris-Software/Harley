@@ -2,7 +2,7 @@
 #define __OVERWORLD_H_
 
 #include <string>
-#include <SDL2/SDL.h>
+#include "sdl_include.h"
 
 #include "situation.h"
 #include "tile.h"

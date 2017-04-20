@@ -1,7 +1,7 @@
 ﻿#ifndef __SITUATION_H_
 #define __SITUATION_H_
 
-#include <SDL2/SDL.h>
+#include "sdl_include.h"
 
 namespace Harley
 {

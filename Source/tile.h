@@ -2,7 +2,7 @@
 #define __TILE_H_
 
 #include <string>
-#include <SDL2/SDL.h>
+#include "sdl_include.h"
 
 namespace Harley {
     class Tileset {

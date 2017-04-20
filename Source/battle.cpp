@@ -1,4 +1,4 @@
-﻿#include <SDL2/SDL.h>
+﻿#include "sdl_include.h"
 
 #include "battle.h"
 
