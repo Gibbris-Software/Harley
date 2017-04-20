@@ -169,7 +169,7 @@ Harley_SOURCE_DIR:STATIC=C:/Users/dakot/ProjectHarley/ProjectHarley.git/Source
 SDL2_INCLUDE_DIR:FILEPATH=SDL2_INCLUDE_DIR-NOTFOUND
 
 //Path to a library.
-SDL2_LIBRARY:FILEPATH=SDL2_LIBRARY-NOTFOUND
+SDL2_LIBRARY:FILEPATH=C:/Windows/SysWOW64/SDL2/lib/x86/SDL2.lib
 
 
 ########################

@@ -1,0 +1,3 @@
+C:/Users/dakot/ProjectHarley/ProjectHarley.git/Source/CMakeFiles/Harley.dir
+C:/Users/dakot/ProjectHarley/ProjectHarley.git/Source/CMakeFiles/ALL_BUILD.dir
+C:/Users/dakot/ProjectHarley/ProjectHarley.git/Source/CMakeFiles/ZERO_CHECK.dir
