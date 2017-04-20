@@ -1,0 +1,2 @@
+C:\Users\dakot\ProjectHarley\ProjectHarley.git\obj\Debug\Harley.csprojResolveAssemblyReference.cache
+C:\Users\dakot\ProjectHarley\ProjectHarley.git\obj\Debug\Harley.exe
