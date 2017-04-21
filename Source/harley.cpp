@@ -1,5 +1,6 @@
 #include "sdl_include.h"
 
+#include "constants.h"
 #include "harley.h"
 #include "situation.h"
 #include "player.h"
@@ -12,16 +13,15 @@ namespace Harley
     Harley::Harley(){
         SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO);
         IMG_Init(IMG_INIT_PNG);
-        window = SDL_CreateWindow("Harley", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, 0);
+        window = SDL_CreateWindow("Harley", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 2*SCREEN_WIDTH, 2*SCREEN_HEIGHT, 0);
         renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
         SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, 0);
         SDL_RenderSetScale(renderer, 2, 2);
 
         currentPlayer = new Player ();
 
-        battle = new Battle (&(*currentPlayer), "anais", &(*renderer));
+        // battle = new Battle (&(*currentPlayer), "anais", &(*renderer));
         overworld = new Overworld (&(*currentPlayer), &(*renderer));
-
         currentSituation = overworld;
     }
 
@@ -44,7 +44,8 @@ namespace Harley
                         break;
                 }
             }
-            currentSituation->update(SDL_GetTicks() - startTime);
+            Uint32 updateTime = SDL_GetTicks();
+            currentSituation->update(updateTime - startTime);
             currentSituation->redraw(renderer);
             SDL_RenderPresent(renderer);
         }

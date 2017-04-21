@@ -1,6 +1,7 @@
 ﻿#include "tile.h"
 #include "constants.h"
 #include "sdl_include.h"
+#include <iostream>
 
 namespace Harley
 {
@@ -17,7 +18,7 @@ namespace Harley
         int tx = which % width;
         int ty = which / height;
         SDL_Rect clip = {tx * TILE_SIZE, ty * TILE_SIZE, TILE_SIZE, TILE_SIZE};
-        SDL_Rect draw = {x*TILE_SIZE, y*TILE_SIZE, TILE_SIZE, TILE_SIZE};
+        SDL_Rect draw = {x, y, TILE_SIZE, TILE_SIZE};
         
         SDL_RenderCopy(renderer, sheet, &clip, &draw);
     }

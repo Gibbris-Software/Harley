@@ -1,5 +1,7 @@
-﻿#include "sdl_include.h"
+﻿#include <iostream>
+#include "sdl_include.h"
 #include "overworld.h"
+#include "constants.h"
 
 namespace Harley
 {
@@ -18,10 +20,10 @@ namespace Harley
     void Overworld::redraw(SDL_Renderer* renderer)
     {
         SDL_RenderClear(renderer);
-        for (int i = 0; i < 20; i++) {
-        	for (int j = 0; j < 15; j++) {
+        for (int i = (character->getTileX()/TILE_SIZE)-(TILE_WIDTH+1)/2; i <= (character->getTileX()/TILE_SIZE)+(TILE_WIDTH+1)/2; i++) {
+        	for (int j = (character->getTileY()/TILE_SIZE)-(TILE_HEIGHT+1)/2; j <= (character->getTileY()/TILE_SIZE)+(TILE_HEIGHT+1)/2; j++) {
         		int tile = map->tileAt(i, j);
-                tiles->renderTile(tile, i, j, renderer);
+                tiles->renderTile(tile, (TILE_SIZE*i)-character->getTileX()+SCREEN_WIDTH/2, (TILE_SIZE*j)-character->getTileY()+SCREEN_HEIGHT/2, renderer);
         	}
         }
     }
