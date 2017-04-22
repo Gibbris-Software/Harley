@@ -109,7 +109,7 @@
     <CustomBuild Include="C:\Users\dakot\ProjectHarley\ProjectHarley.git\Source\CMakeFiles\84f9903dd0da77d63a7e3b658d68780e\generate.stamp.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Checking Build System</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/dakot/ProjectHarley/ProjectHarley.git/Source -BC:/Users/dakot/ProjectHarley/ProjectHarley.git/Source --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/dakot/ProjectHarley/ProjectHarley.git/Source/Harley.sln
+"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/dakot/ProjectHarley/ProjectHarley.git/Source -BC:/Users/dakot/ProjectHarley/ProjectHarley.git/Source --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/dakot/ProjectHarley/ProjectHarley.git/Source/Project.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -122,7 +122,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Checking Build System</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/dakot/ProjectHarley/ProjectHarley.git/Source -BC:/Users/dakot/ProjectHarley/ProjectHarley.git/Source --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/dakot/ProjectHarley/ProjectHarley.git/Source/Harley.sln
+"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/dakot/ProjectHarley/ProjectHarley.git/Source -BC:/Users/dakot/ProjectHarley/ProjectHarley.git/Source --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/dakot/ProjectHarley/ProjectHarley.git/Source/Project.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -135,7 +135,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Checking Build System</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/dakot/ProjectHarley/ProjectHarley.git/Source -BC:/Users/dakot/ProjectHarley/ProjectHarley.git/Source --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/dakot/ProjectHarley/ProjectHarley.git/Source/Harley.sln
+"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/dakot/ProjectHarley/ProjectHarley.git/Source -BC:/Users/dakot/ProjectHarley/ProjectHarley.git/Source --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/dakot/ProjectHarley/ProjectHarley.git/Source/Project.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -148,7 +148,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Checking Build System</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/dakot/ProjectHarley/ProjectHarley.git/Source -BC:/Users/dakot/ProjectHarley/ProjectHarley.git/Source --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/dakot/ProjectHarley/ProjectHarley.git/Source/Harley.sln
+"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/dakot/ProjectHarley/ProjectHarley.git/Source -BC:/Users/dakot/ProjectHarley/ProjectHarley.git/Source --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/dakot/ProjectHarley/ProjectHarley.git/Source/Project.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone

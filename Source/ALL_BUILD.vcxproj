@@ -168,10 +168,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>A02848BB-77FE-31E4-B318-587EEE4D55DB</Project>
       <Name>ZERO_CHECK</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\dakot\ProjectHarley\ProjectHarley.git\Source\Harley.vcxproj">
-      <Project>0E7645A8-754C-3C06-AAD6-2FE971FB5383</Project>
-      <Name>Harley</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\dakot\ProjectHarley\ProjectHarley.git\CMakeFiles\733d2994b282aaa80d415ba74b1fb112\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{4A4E7D2D-169F-3205-A1D1-D4F0F8362377}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

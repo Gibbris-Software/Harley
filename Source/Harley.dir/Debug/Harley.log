@@ -1,0 +1,2 @@
+﻿  main.cpp
+c:\users\dakot\projectharley\projectharley.git\source\sdl_include.h(6): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
