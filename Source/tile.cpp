@@ -1,26 +1,27 @@
 ﻿#include "tile.h"
 #include "constants.h"
-#include "sdl_include.h"
+#include "sfml.h"
 #include <iostream>
 
 namespace Harley
 {
-	Tileset::Tileset (std::string location, SDL_Renderer* renderer)
+	Tileset::Tileset (std::string location)
     {
-        SDL_Surface *surface = IMG_Load(location.c_str());
-        width = surface->w / TILE_SIZE;
-        height = surface->w / TILE_SIZE;
-        sheet = SDL_CreateTextureFromSurface(renderer, surface);
-        SDL_FreeSurface(surface);
+        sheet.loadFromFile(location);
+        sheet.setSmooth(false);
+        width = sheet.getSize().x / TILE_SIZE;
+        height = sheet.getSize().y / TILE_SIZE;
+        sprite.setTexture(sheet);
+        sprite.setScale(2, 2);
     }
 
-    void Tileset::renderTile(int which, int x, int y, SDL_Renderer* renderer){
+    void Tileset::renderTile(int which, int x, int y, sf::RenderWindow& window){
         int tx = which % width;
         int ty = which / height;
-        SDL_Rect clip = {tx * TILE_SIZE, ty * TILE_SIZE, TILE_SIZE, TILE_SIZE};
-        SDL_Rect draw = {x, y, TILE_SIZE, TILE_SIZE};
-        
-        SDL_RenderCopy(renderer, sheet, &clip, &draw);
+        sprite.setTextureRect(sf::IntRect(tx*TILE_SIZE, ty*TILE_SIZE, TILE_SIZE, TILE_SIZE));
+        sprite.setPosition(x*2, y*2);
+
+        window.draw(sprite);
     }
 }
 

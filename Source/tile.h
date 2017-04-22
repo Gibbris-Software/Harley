@@ -2,16 +2,17 @@
 #define __TILE_H_
 
 #include <string>
-#include "sdl_include.h"
+#include "sfml.h"
 
 namespace Harley {
     class Tileset {
-        SDL_Texture *sheet;
+        sf::Texture sheet;
+        sf::Sprite sprite;
         int width;
         int height;
       public:
-        Tileset(std::string, SDL_Renderer*);
-        void renderTile(int, int, int, SDL_Renderer*);
+        Tileset(std::string);
+        void renderTile(int, int, int, sf::RenderWindow&);
     };
 }
 

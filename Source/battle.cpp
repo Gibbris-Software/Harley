@@ -1,12 +1,13 @@
-﻿#include "sdl_include.h"
+﻿#include "sfml.h"
 
 #include "battle.h"
+#include "constants.h"
 
 namespace Harley
 {
-    Battle::Battle (Player *player, std::string where, SDL_Renderer* renderer)
+    Battle::Battle (Player *player, std::string where)
     {
-        tiles = new Tileset ("Resources/anais.png", renderer);
+        tiles = new Tileset ("Resources/anais.png");
         map = new Map ("Resources/anais.map");
         character = player;
         movingRight = false;
@@ -15,16 +16,16 @@ namespace Harley
         movingDown = false;
     }
 
-    void Battle::redraw(SDL_Renderer* renderer)
+    void Battle::redraw(sf::RenderWindow &window)
     {
-        SDL_RenderClear(renderer);
+        //SDL_RenderClear(renderer);
         for (int i = 0; i < 20; i++) {
         	for (int j = 0; j < 15; j++) {
         		int tile = map->tileAt(i, j);
-                tiles->renderTile(tile, i, j, renderer);
+                tiles->renderTile(tile, i*TILE_SIZE, j*TILE_SIZE, window);
         	}
         }
-        
+
     }
 
     void Battle::startUp(){
@@ -81,7 +82,7 @@ namespace Harley
         speed = 3;
     }
 
-    void Battle::update(Uint32 time){
+    void Battle::update(){
         if (movingUp) {
             character->moveUpBattle (speed);
         } else if (movingDown) {

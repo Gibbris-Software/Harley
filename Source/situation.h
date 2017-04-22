@@ -1,14 +1,14 @@
 ﻿#ifndef __SITUATION_H_
 #define __SITUATION_H_
 
-#include "sdl_include.h"
+#include "sfml.h"
 
 namespace Harley
 {
 	class Situation
 	{
       public:
-		virtual void redraw(SDL_Renderer*) = 0;
+		virtual void redraw(sf::RenderWindow&) = 0;
 		virtual void startLeft() = 0;
 		virtual void startRight() = 0;
 		virtual void startUp() = 0;
@@ -17,7 +17,7 @@ namespace Harley
 		virtual void stopRight() = 0;
 		virtual void stopUp() = 0;
 		virtual void stopDown() = 0;
-		virtual void update(Uint32) = 0;
+		virtual void update() = 0;
 	};
 }
 

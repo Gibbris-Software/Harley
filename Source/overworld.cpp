@@ -1,14 +1,14 @@
 ﻿#include <iostream>
-#include "sdl_include.h"
+#include "sfml.h"
 #include "overworld.h"
 #include "constants.h"
 
 namespace Harley
 {
-	Overworld::Overworld (Player* player, SDL_Renderer* renderer)
+	Overworld::Overworld (Player* player)
     {
-        tiles = new Tileset ("Resources/anais.png", renderer);
-        map = new Map ("Resources/anais.map");
+        tiles = new Tileset ("Resources/anais.png");
+        map = new Map ("Resources/beauve.map");
         character = player;
         movingRight = false;
         movingUp = false;
@@ -17,17 +17,16 @@ namespace Harley
         speed = 3;
     }
 
-    void Overworld::redraw(SDL_Renderer* renderer)
+    void Overworld::redraw(sf::RenderWindow& window)
     {
-        SDL_RenderClear(renderer);
         for (int i = (character->getTileX()/TILE_SIZE)-(TILE_WIDTH+1)/2; i <= (character->getTileX()/TILE_SIZE)+(TILE_WIDTH+1)/2; i++) {
         	for (int j = (character->getTileY()/TILE_SIZE)-(TILE_HEIGHT+1)/2; j <= (character->getTileY()/TILE_SIZE)+(TILE_HEIGHT+1)/2; j++) {
         		int tile = map->tileAt(i, j);
-                tiles->renderTile(tile, (TILE_SIZE*i)-character->getTileX()+SCREEN_WIDTH/2, (TILE_SIZE*j)-character->getTileY()+SCREEN_HEIGHT/2, renderer);
+                tiles->renderTile(tile, (TILE_SIZE*i)-character->getTileX()+SCREEN_WIDTH/2, (TILE_SIZE*j)-character->getTileY()+SCREEN_HEIGHT/2, window);
         	}
         }
     }
-    
+
     void Overworld::startUp(){
         movingUp = true;
         movingDown = false;
@@ -82,7 +81,7 @@ namespace Harley
         speed = 3;
     }
 
-    void Overworld::update(Uint32 time){
+    void Overworld::update(){
         if (movingUp) {
             character->moveUpTile (speed);
         } else if (movingDown) {

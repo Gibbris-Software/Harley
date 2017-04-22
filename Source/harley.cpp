@@ -1,4 +1,4 @@
-#include "sdl_include.h"
+#include "sfml.h"
 
 #include "constants.h"
 #include "harley.h"
@@ -11,85 +11,83 @@
 namespace Harley
 {
     Harley::Harley(){
-        SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO);
-        IMG_Init(IMG_INIT_PNG);
-        window = SDL_CreateWindow("Harley", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 2*SCREEN_WIDTH, 2*SCREEN_HEIGHT, 0);
-        renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
-        SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, 0);
-        SDL_RenderSetScale(renderer, 2, 2);
+        window.create(sf::VideoMode(2*SCREEN_WIDTH, 2*SCREEN_HEIGHT), "Harley");
+        window.setVerticalSyncEnabled(true);
 
         currentPlayer = new Player ();
 
         // battle = new Battle (&(*currentPlayer), "anais", &(*renderer));
-        overworld = new Overworld (&(*currentPlayer), &(*renderer));
+        overworld = new Overworld (&(*currentPlayer));
         currentSituation = overworld;
     }
 
     void Harley::mainloop(){
-        SDL_Event e;
+        sf::Event e;
         bool running = true;
-        Uint32 startTime;
         while (running){
-            startTime = SDL_GetTicks();
-            while (SDL_PollEvent(&e) != 0){
+            while (window.pollEvent(e)){
                 switch (e.type){
-                    case SDL_QUIT:
+                    case sf::Event::Closed:
                         running = false;
                         break;
-                    case SDL_KEYDOWN:
+                    case sf::Event::KeyPressed:
                         handleKeyDown(e.key);
                         break;
-                    case SDL_KEYUP:
+                    case sf::Event::KeyReleased:
                         handleKeyUp(e.key);
+                        break;
+                    default:
                         break;
                 }
             }
-            Uint32 updateTime = SDL_GetTicks();
-            currentSituation->update(updateTime - startTime);
-            currentSituation->redraw(renderer);
-            SDL_RenderPresent(renderer);
+            currentSituation->update();
+            currentSituation->redraw(window);
+            window.display();
         }
     }
-    
-    void Harley::handleKeyDown(SDL_KeyboardEvent event){
-        switch(event.keysym.sym){
-            case SDLK_w:
+
+    void Harley::handleKeyDown(sf::Event::KeyEvent event){
+        switch(event.code){
+            case sf::Keyboard::W:
                 currentSituation->startUp();
                 break;
-            case SDLK_s:
+            case sf::Keyboard::S:
                 currentSituation->startDown();
                 break;
-            case SDLK_a:
+            case sf::Keyboard::A:
                 currentSituation->startLeft();
                 break;
-            case SDLK_d:
+            case sf::Keyboard::D:
                 currentSituation->startRight();
                 break;
+            default:
+                break;
         }
     }
-    
-    void Harley::handleKeyUp(SDL_KeyboardEvent event){
-        switch(event.keysym.sym){
-            case SDLK_w:
+
+    void Harley::handleKeyUp(sf::Event::KeyEvent event){
+        switch(event.code){
+            case sf::Keyboard::W:
                 currentSituation->stopUp();
                 break;
-            case SDLK_s:
+            case sf::Keyboard::S:
                 currentSituation->stopDown();
                 break;
-            case SDLK_a:
+            case sf::Keyboard::A:
                 currentSituation->stopLeft();
                 break;
-            case SDLK_d:
+            case sf::Keyboard::D:
                 currentSituation->stopRight();
+                break;
+            default:
                 break;
         }
     }
-    
+
     void Harley::quit(){
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(window);
         delete overworld;
         delete currentPlayer;
-        delete battle;
+        window.close();
+        // delete battle;
     }
 }

@@ -1,7 +1,7 @@
 #ifndef __HARLEY_H_
 #define __HARLEY_H_
 
-#include "sdl_include.h"
+#include "sfml.h"
 
 #include "player.h"
 #include "situation.h"
@@ -10,15 +10,14 @@ namespace Harley
 {
     class Harley
     {
-        SDL_Window *window;
-        SDL_Renderer *renderer;
+        sf::RenderWindow window;
         Situation *battle;
         Situation *overworld;
         Player *currentPlayer;
         Situation *currentSituation;
 
-        void handleKeyDown(SDL_KeyboardEvent);
-        void handleKeyUp(SDL_KeyboardEvent);
+        void handleKeyDown(sf::Event::KeyEvent);
+        void handleKeyUp(sf::Event::KeyEvent);
 
       public:
         Harley ();

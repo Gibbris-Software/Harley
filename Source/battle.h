@@ -13,17 +13,17 @@ namespace Harley {
         Tileset *tiles;
         Map *map;
         Player *character;
-        
+
         bool movingRight;
         bool movingLeft;
         bool movingUp;
         bool movingDown;
-        
+
         int speed;
-      
+
       public:
-        Battle(Player*, std::string, SDL_Renderer*);
-        void redraw(SDL_Renderer*);
+        Battle(Player*, std::string);
+        void redraw(sf::RenderWindow&);
 		void startLeft();
 		void startRight();
 		void startUp();
@@ -32,8 +32,8 @@ namespace Harley {
 		void stopRight();
 		void stopUp();
 		void stopDown();
-		void update(Uint32);
+		void update();
     };
-}       
+}
 
 #endif // __BATTLE_H_
