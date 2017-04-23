@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "sfml.h"
 
 #include "constants.h"
@@ -11,7 +13,7 @@
 namespace Harley
 {
     Harley::Harley(){
-        window.create(sf::VideoMode(2*SCREEN_WIDTH, 2*SCREEN_HEIGHT), "Harley");
+        window.create(sf::VideoMode(SCALE*SCREEN_WIDTH, SCALE*SCREEN_HEIGHT), "Harley");
         window.setVerticalSyncEnabled(true);
 
         currentPlayer = new Player ();
@@ -35,6 +37,23 @@ namespace Harley
                         break;
                     case sf::Event::KeyReleased:
                         handleKeyUp(e.key);
+                        break;
+                    case sf::Event::JoystickConnected:
+                        std::cout << sf::Joystick::getButtonCount(0) << std::endl;
+                        break;
+                    case sf::Event::JoystickButtonPressed:
+                        //std::cout << e.joystickButton.button << std::endl;
+                        handleButtonPress(e.joystickButton);
+                        //     4                     5
+                        //   .-------.       .---------.
+                        //  /         \_____/      3    \
+                        //  |  9      6  8  7    2    1 |
+                        //  |                      0    |
+                        //                    10
+                    case sf::Event::JoystickButtonReleased:
+                        handleButtonRelease(e.joystickButton);
+                    case sf::Event::JoystickMoved:
+                        handleAxisMotion(e.joystickMove);
                         break;
                     default:
                         break;
@@ -61,7 +80,7 @@ namespace Harley
                 currentSituation->startRight();
                 break;
             default:
-                break;
+                std::cout << event.code << std::endl;
         }
     }
 
@@ -78,6 +97,47 @@ namespace Harley
                 break;
             case sf::Keyboard::D:
                 currentSituation->stopRight();
+                break;
+            default:
+                break;
+        }
+    }
+
+    void Harley::handleButtonPress(sf::Event::JoystickButtonEvent event){
+        switch(event.button){
+            default:
+                break;
+        }
+    }
+
+    void Harley::handleButtonRelease(sf::Event::JoystickButtonEvent event){
+        switch(event.button){
+            default:
+                break;
+        }
+    }
+
+    void Harley::handleAxisMotion(sf::Event::JoystickMoveEvent event){
+        switch(event.axis){
+            case sf::Joystick::PovY:
+                if (event.position < 0){
+                    currentSituation->startUp();
+                } else if (event.position > 0) {
+                    currentSituation->startDown();
+                } else {
+                    currentSituation->stopUp();
+                    currentSituation->stopDown();
+                }
+                break;
+            case sf::Joystick::PovX:
+                if (event.position < 0){
+                    currentSituation->startLeft();
+                } else if (event.position > 0) {
+                    currentSituation->startRight();
+                } else {
+                    currentSituation->stopLeft();
+                    currentSituation->stopRight();
+                }
                 break;
             default:
                 break;

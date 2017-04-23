@@ -12,14 +12,14 @@ namespace Harley
         width = sheet.getSize().x / TILE_SIZE;
         height = sheet.getSize().y / TILE_SIZE;
         sprite.setTexture(sheet);
-        sprite.setScale(2, 2);
+        sprite.setScale(SCALE, SCALE);
     }
 
     void Tileset::renderTile(int which, int x, int y, sf::RenderWindow& window){
         int tx = which % width;
         int ty = which / height;
         sprite.setTextureRect(sf::IntRect(tx*TILE_SIZE, ty*TILE_SIZE, TILE_SIZE, TILE_SIZE));
-        sprite.setPosition(x*2, y*2);
+        sprite.setPosition(x*SCALE, y*SCALE);
 
         window.draw(sprite);
     }

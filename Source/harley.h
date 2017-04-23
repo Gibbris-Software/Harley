@@ -16,6 +16,9 @@ namespace Harley
         Player *currentPlayer;
         Situation *currentSituation;
 
+        void handleButtonPress(sf::Event::JoystickButtonEvent);
+        void handleButtonRelease(sf::Event::JoystickButtonEvent);
+        void handleAxisMotion(sf::Event::JoystickMoveEvent);
         void handleKeyDown(sf::Event::KeyEvent);
         void handleKeyUp(sf::Event::KeyEvent);
 
