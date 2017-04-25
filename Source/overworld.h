@@ -2,8 +2,8 @@
 #define __OVERWORLD_H_
 
 #include <string>
-#include "sfml.h"
 
+#include "sfml.h"
 #include "situation.h"
 #include "tile.h"
 #include "map.h"

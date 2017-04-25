@@ -10,6 +10,8 @@ namespace Harley {
       public:
         Map(std::string);
         int tileAt(int, int);
+        int width();
+        int height();
     };
 }
 

@@ -10,8 +10,8 @@ namespace Harley
         defence = 5;
         weight = 9;
         max_weight_load = 0;
-        tile_x = 1600;
-        tile_y = 1600;
+        tile_x = 160;
+        tile_y = 112;
         battle_x = 40;
         battle_y = 40;
         //ability = new HealthRegenAbility ();

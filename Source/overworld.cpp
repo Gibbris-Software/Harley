@@ -19,10 +19,19 @@ namespace Harley
 
     void Overworld::redraw(sf::RenderWindow& window)
     {
-        for (int i = (character->getTileX()/TILE_SIZE)-(TILE_WIDTH+1)/2; i <= (character->getTileX()/TILE_SIZE)+(TILE_WIDTH+1)/2; i++) {
-        	for (int j = (character->getTileY()/TILE_SIZE)-(TILE_HEIGHT+1)/2; j <= (character->getTileY()/TILE_SIZE)+(TILE_HEIGHT+1)/2; j++) {
+        int startX = std::max(0, (character->getTileX()/TILE_SIZE)-(TILE_WIDTH+1)/2);
+        int startY = std::max(0, (character->getTileY()/TILE_SIZE)-(TILE_HEIGHT+1)/2);
+        int endX = std::min(map->width(), startX+TILE_WIDTH);
+        int endY = std::min(map->height()-1, startY+TILE_HEIGHT);
+        startX = endX - TILE_WIDTH;
+        startY = endY - TILE_HEIGHT;
+        int centerX = std::max(std::min(character->getTileX(), map->width()*TILE_SIZE-SCREEN_WIDTH/2), SCREEN_WIDTH/2);
+        int centerY = std::max(std::min(character->getTileY(), map->height()*TILE_SIZE-SCREEN_HEIGHT/2), SCREEN_HEIGHT/2);
+        // std::cout << endX << ", " << endY << ", " << character->getTileX() / TILE_SIZE << ", " << character->getTileY() / TILE_SIZE << std::endl;
+        for (int i = startX; i <= endX; i++) {
+        	for (int j = startY; j <= endY; j++) {
         		int tile = map->tileAt(i, j);
-                tiles->renderTile(tile, (TILE_SIZE*i)-character->getTileX()+SCREEN_WIDTH/2, (TILE_SIZE*j)-character->getTileY()+SCREEN_HEIGHT/2, window);
+                tiles->renderTile(tile, (TILE_SIZE*i)-centerX + SCREEN_WIDTH/2, (TILE_SIZE*j)-centerY+SCREEN_HEIGHT/2, window);
         	}
         }
     }

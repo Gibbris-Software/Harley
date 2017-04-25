@@ -24,5 +24,13 @@ namespace Harley
     int Map::tileAt(int x, int y){
         return tiles[y][x];
     }
+
+    int Map::width(){
+        return tiles[0].size();
+    }
+
+    int Map::height(){
+        return tiles.size();
+    }
 }
 
