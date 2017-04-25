@@ -34,6 +34,10 @@ namespace Harley
                 tiles->renderTile(tile, (TILE_SIZE*i)-centerX + SCREEN_WIDTH/2, (TILE_SIZE*j)-centerY+SCREEN_HEIGHT/2, window);
         	}
         }
+        // character->next_animation();
+        sf::Sprite sprite = character->direction(movingRight-movingLeft, movingDown-movingUp);
+        sprite.setPosition((character->getTileX()-centerX+SCREEN_WIDTH/2)*SCALE, (character->getTileY()-centerY+SCREEN_HEIGHT/2)*SCALE);
+        window.draw(sprite);
     }
 
     void Overworld::startUp(){

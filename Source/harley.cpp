@@ -14,7 +14,7 @@ namespace Harley
 {
     Harley::Harley(){
         window.create(sf::VideoMode(SCALE*SCREEN_WIDTH, SCALE*SCREEN_HEIGHT), "Harley");
-        window.setVerticalSyncEnabled(true);
+        window.setFramerateLimit(30);
 
         currentPlayer = new Player ();
 
@@ -26,7 +26,11 @@ namespace Harley
     void Harley::mainloop(){
         sf::Event e;
         bool running = true;
+        sf::Clock clock;
+        sf::Time prevTime = clock.getElapsedTime();
+        sf::Time elapsedTime;
         while (running){
+            elapsedTime = clock.getElapsedTime();
             while (window.pollEvent(e)){
                 switch (e.type){
                     case sf::Event::Closed:
@@ -58,6 +62,10 @@ namespace Harley
                     default:
                         break;
                 }
+            }
+            if (elapsedTime.asMilliseconds() - 100 > prevTime.asMilliseconds()){
+                currentPlayer->nextAnimation();
+                prevTime = elapsedTime;
             }
             currentSituation->update();
             currentSituation->redraw(window);

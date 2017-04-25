@@ -1,6 +1,7 @@
 #ifndef __PLAYER_H_
 #define __PLAYER_H_
 
+#include "sfml.h"
 #include "ability.h"
 #include "attack.h"
 
@@ -12,15 +13,24 @@ namespace Harley {
         int defence;
         int weight;
         int max_weight_load;
-        
+
         int tile_x;
         int tile_y;
         int battle_x;
         int battle_y;
 
+        int animation_state;
+
+        sf::IntRect front [2];
+        sf::IntRect back [2];
+        sf::IntRect left [2];
+        sf::IntRect right [2];
+        sf::Texture texture;
+        sf::Sprite sprite;
+
         Ability ability;
         SpecialAttack special_attack;
-        
+
       public:
         Player();
         void attack();
@@ -29,14 +39,14 @@ namespace Harley {
         void block();
         void dealDamage(int);
         void startBattle();
-        
+
         int getHealth();
         int getStamina();
         int getBattleX();
         int getBattleY();
         int getTileX();
         int getTileY();
-        
+
         void moveUpBattle(int);
         void moveDownBattle(int);
         void moveLeftBattle(int);
@@ -45,6 +55,9 @@ namespace Harley {
         void moveDownTile(int);
         void moveLeftTile(int);
         void moveRightTile(int);
+
+        void nextAnimation();
+        sf::Sprite direction(int, int);
     };
 }
 
