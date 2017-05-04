@@ -8,7 +8,7 @@ namespace Harley
     Battle::Battle (Player *player, std::string where)
     {
         tiles = new Tileset ("Resources/anais.png");
-        map = new Map ("Resources/anais.map");
+        map = new Map ("Resources/anais.map", 20, 15, 1, 1);
         character = player;
         movingRight = false;
         movingUp = false;

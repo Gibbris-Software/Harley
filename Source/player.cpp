@@ -11,8 +11,8 @@ namespace Harley
         defence = 5;
         weight = 9;
         max_weight_load = 0;
-        tile_x = TILE_SIZE*201;
-        tile_y = TILE_SIZE*201;
+        tile_x = 629*TILE_SIZE;
+        tile_y = 588*TILE_SIZE;
         battle_x = 40;
         battle_y = 40;
         texture.loadFromFile("Resources/HarleyBeta.png");

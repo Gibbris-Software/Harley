@@ -3,11 +3,11 @@
 
 #define TILE_SIZE 16
 
-#define SCREEN_WIDTH 320
-#define SCREEN_HEIGHT 256
-
 #define TILE_WIDTH 20
 #define TILE_HEIGHT 16
+
+#define SCREEN_WIDTH (TILE_SIZE * TILE_WIDTH)
+#define SCREEN_HEIGHT (TILE_SIZE * TILE_HEIGHT)
 
 #define SCALE 2
 

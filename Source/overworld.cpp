@@ -5,10 +5,10 @@
 
 namespace Harley
 {
-	Overworld::Overworld (Player* player)
+    Overworld::Overworld (Player* player)
     {
         tiles = new Tileset ("Resources/anais.png");
-        map = new Map ("Resources/beauve.map");
+        map = new Map ("Resources/beauve", 1440, 960, 3, 3);
         character = player;
         movingRight = false;
         movingUp = false;
