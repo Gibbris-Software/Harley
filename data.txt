@@ -1,0 +1,81 @@
+Advancement flags: (bools) (all default false)
+ Returned to Rosebush
+ Fought Soldier
+ Escaped Rosebush
+ Talked to Malachai about the prophecy
+ Defeated Knights
+ Brought Blueprint to Malachai. (Chapter 1)
+ Approached by Perseus Once
+ Bribed Snowinoa guard
+ Intimidated Snowinoa Guard
+ Used honesty on Snowinoa guard
+ Failed against Snowinoa guard
+ Entered Snowinoa
+ Followed thief
+ Let thief go
+ Arrested thief
+ Talked to Queen Bridget
+ Defeated Arcterror
+ Recieved Snow Rose
+ Recieved ID card
+ Completed Snowinoa (Chapter 2-4, depending)
+ Bribed Ordeas Guard
+ Intimidated Ordeas Guard
+ Used honesty on Ordeas Guard
+ Failed against Ordeas Guard
+ Defeated Wooden Golem
+ Entered Ordeas
+ Talked to Father Halo about finding Rascal
+ Sailed to Praema's Island
+ Defeated Praema
+ Captures Praema
+ Talked to Father Halo about Praema
+ Completed Ordeas (Chapter 2-4, depending)
+ Started Idimal
+ Entered Idimal from Ordeas
+ Entered Idimal from Snowinoa
+ Talked to Nyanko about spirits
+ Talked to King Jestice
+ Approached by Perseus Twice
+ Talked to Stefan
+ Defeated Kobi
+ Completed Idimal (Chapter 3-4, depending)
+ Approached by Perseus Three times
+ Gained Idimal's Sword
+ Defeated Mist
+ Restored King Terrance (Chapter 5)
+ Talked to Perseus
+ Sailed to Snowanais
+ Talked to President Bruton about the ship
+ Bought Robes
+ Defeated Desert Scorpion
+ Brought Poison to President Bruton
+ Defeated Fog
+ Collected Idimal's Power
+ Returned to Anais
+ Talked to King Terrance about the ship (Chapter 6)
+
+Abilites: (bools):
+ LifeMe
+ Body Guard
+ Swifty
+ Strength
+ Cardio
+ All-Round Conditioning
+ LifeMe Greed
+ Nature's Gift
+ Doppelganger
+ Nyanko
+ Helper Minion
+ Attraction
+ Kaboom
+ Mehamaka Blast
+ Fishy
+ Cold, Hard Cash
+
+Stats: (ints)
+ HP
+ Hits
+ Side quests
+ Chapter
+ Save point (position)
