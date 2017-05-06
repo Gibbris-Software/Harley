@@ -4,11 +4,11 @@
 #include "constants.h"
 
 namespace Harley
-{
+{/*
     Battle::Battle (Player *player, std::string where)
     {
         tiles = new Tileset ("Resources/anais.png");
-        map = new Map ("Resources/anais.map", 20, 15, 1, 1);
+        map = new Map ("anais_battle");
         character = player;
         movingRight = false;
         movingUp = false;
@@ -19,7 +19,7 @@ namespace Harley
     void Battle::redraw(sf::RenderWindow &window)
     {
         //SDL_RenderClear(renderer);
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < TILE_WIDTH; i++) {
         	for (int j = 0; j < 15; j++) {
         		int tile = map->tileAt(i, j);
                 tiles->renderTile(tile, i*TILE_SIZE, j*TILE_SIZE, window);
@@ -94,6 +94,6 @@ namespace Harley
         } else if (movingLeft) {
             character->moveLeftBattle (speed);
         }
-    }
+    }*/
 }
 

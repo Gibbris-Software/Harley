@@ -14,7 +14,7 @@ namespace Harley
         movingUp = false;
         movingLeft = false;
         movingDown = false;
-        speed = 3;
+        speed = BASE_SPEED;
     }
 
     void Overworld::redraw(sf::RenderWindow& window)
@@ -44,7 +44,7 @@ namespace Harley
         movingUp = true;
         movingDown = false;
         if (movingLeft || movingRight) {
-            speed = 2;
+            speed = DIAGONAL_SPEED;
         }
     }
 
@@ -52,7 +52,7 @@ namespace Harley
         movingDown = true;
         movingUp = false;
         if (movingLeft || movingRight) {
-            speed = 2;
+            speed = DIAGONAL_SPEED;
         }
     }
 
@@ -60,7 +60,7 @@ namespace Harley
         movingLeft = true;
         movingRight = false;
         if (movingUp || movingDown) {
-            speed = 2;
+            speed = DIAGONAL_SPEED;
         }
     }
 
@@ -69,29 +69,29 @@ namespace Harley
         movingRight = true;
         movingLeft = false;
         if (movingUp || movingDown) {
-            speed = 2;
+            speed = DIAGONAL_SPEED;
         }
     }
 
     void Overworld::stopUp(){
         movingUp = false;
-        speed = 3;
+        speed = BASE_SPEED;
     }
 
     void Overworld::stopDown(){
         movingDown = false;
-        speed = 3;
+        speed = BASE_SPEED;
     }
 
     void Overworld::stopLeft(){
         movingLeft = false;
-        speed = 3;
+        speed = BASE_SPEED;
     }
 
     void Overworld::stopRight ()
     {
         movingRight = false;
-        speed = 3;
+        speed = BASE_SPEED;
     }
 
     void Overworld::update(){

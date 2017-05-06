@@ -51,6 +51,7 @@ namespace Harley
 
     Map::Map(std::string name){
         std::ifstream content(("Resources/" + name + ".csv").c_str());
+        std::string line;
         while (std::getline(content, line)){
             std::vector<int> row;
             std::istringstream data(line);

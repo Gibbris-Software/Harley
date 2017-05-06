@@ -3,6 +3,7 @@
 
 #include <string>
 
+#include "sfml.h"
 #include "situation.h"
 #include "tile.h"
 #include "map.h"
@@ -10,7 +11,7 @@
 
 namespace Harley {
     class Battle : public Situation {
-        Tileset *tiles;
+        sf::Texture background;
         Map *map;
         Player *character;
 

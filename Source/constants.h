@@ -11,4 +11,7 @@
 
 #define SCALE 2
 
+#define BASE_SPEED 3
+#define DIAGONAL_SPEED 2
+
 #endif // __CONSTANTS_H_
