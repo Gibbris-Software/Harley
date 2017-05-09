@@ -11,16 +11,18 @@
 
 namespace Harley {
     class Battle : public Situation {
-        sf::Texture background;
+        sf::Texture background_texture;
+        sf::Sprite background;
         Map *map;
         Player *character;
 
         bool movingRight;
         bool movingLeft;
-        bool movingUp;
-        bool movingDown;
+        bool jumping;
+        bool falling;
+        int yspeed;
 
-        int speed;
+        int x, y;
 
       public:
         Battle(Player*, std::string);

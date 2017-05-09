@@ -67,13 +67,12 @@ namespace Harley
         return stamina;
     }
 
-    int Player::getBattleX()
-    {
-        return battle_x;
+    int Player::getSpeed(){
+        return BASE_SPEED;
     }
 
-    int Player::getBattleY() {
-        return battle_y;
+    int Player::getDiagonalSpeed(){
+        return DIAGONAL_SPEED;
     }
 
     int Player::getTileX()

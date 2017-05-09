@@ -20,7 +20,7 @@ namespace Harley
 
         // battle = new Battle (&(*currentPlayer), "anais", &(*renderer));
         overworld = new Overworld (&(*currentPlayer));
-        currentSituation = overworld;
+        currentSituation = new Battle(&(*currentPlayer), "anais");
     }
 
     void Harley::mainloop(){

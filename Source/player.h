@@ -42,8 +42,8 @@ namespace Harley {
 
         int getHealth();
         int getStamina();
-        int getBattleX();
-        int getBattleY();
+        int getSpeed();
+        int getDiagonalSpeed();
         int getTileX();
         int getTileY();
 

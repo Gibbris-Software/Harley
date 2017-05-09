@@ -4,96 +4,113 @@
 #include "constants.h"
 
 namespace Harley
-{/*
+{
     Battle::Battle (Player *player, std::string where)
     {
-        tiles = new Tileset ("Resources/anais.png");
-        map = new Map ("anais_battle");
+        background_texture.loadFromFile("Resources/"+where+"_battle.png");
+        background.setTexture(background_texture);
+        background.setScale(SCALE, SCALE);
+        map = new Map (where + "_battle");
+        for (int x = 0; x < map->width(); x++){
+            for (int y = 0; y < map->height(); y++){
+                if (map->tileAt(x, y) == 2){
+                    this->x = x*TILE_SIZE;
+                    this->y = y*TILE_SIZE;
+                }
+            }
+        }
         character = player;
         movingRight = false;
-        movingUp = false;
         movingLeft = false;
-        movingDown = false;
     }
 
     void Battle::redraw(sf::RenderWindow &window)
     {
-        //SDL_RenderClear(renderer);
-        for (int i = 0; i < TILE_WIDTH; i++) {
-        	for (int j = 0; j < 15; j++) {
-        		int tile = map->tileAt(i, j);
-                tiles->renderTile(tile, i*TILE_SIZE, j*TILE_SIZE, window);
-        	}
-        }
+        window.draw(background);
+
+        sf::Sprite sprite = character->direction(movingRight-movingLeft, 0);
+        sprite.setPosition(x*SCALE, (y+TILE_SIZE-PLAYER_HEIGHT)*SCALE);
+        window.draw(sprite);
 
     }
 
     void Battle::startUp(){
-        movingUp = true;
-        movingDown = false;
-        if (movingLeft || movingRight) {
-            speed = 2;
+        jumping = true;
+        if (!falling){
+            falling = true;
+            yspeed = -TILE_SIZE/2;
         }
     }
 
     void Battle::startDown(){
-        movingDown = true;
-        movingUp = false;
-        if (movingLeft || movingRight) {
-            speed = 2;
-        }
     }
 
     void Battle::startLeft(){
         movingLeft = true;
         movingRight = false;
-        if (movingUp || movingDown) {
-            speed = 2;
-        }
     }
 
     void Battle::startRight ()
     {
         movingRight = true;
         movingLeft = false;
-        if (movingUp || movingDown) {
-            speed = 2;
-        }
     }
 
     void Battle::stopUp(){
-        movingUp = false;
-        speed = 3;
+        jumping = false;
     }
 
     void Battle::stopDown(){
-        movingDown = false;
-        speed = 3;
     }
 
     void Battle::stopLeft(){
         movingLeft = false;
-        speed = 3;
     }
 
     void Battle::stopRight ()
     {
         movingRight = false;
-        speed = 3;
     }
 
     void Battle::update(){
-        if (movingUp) {
-            character->moveUpBattle (speed);
-        } else if (movingDown) {
-            character->moveDownBattle (speed);
+        if (falling){
+            y += yspeed;
+            yspeed += 1;
         }
-
         if (movingRight) {
-            character->moveRightBattle (speed);
+            x += character->getSpeed();
         } else if (movingLeft) {
-            character->moveLeftBattle (speed);
+            x -= character->getSpeed();
         }
-    }*/
+        int topleft = map->tileAt(x/TILE_SIZE, y/TILE_SIZE);
+        int topright = map->tileAt((x+TILE_SIZE-1)/TILE_SIZE, y/TILE_SIZE);
+        int bottomleft = map->tileAt(x/TILE_SIZE, (y+TILE_SIZE-1)/TILE_SIZE);
+        int bottomright = map->tileAt((x+TILE_SIZE-1)/TILE_SIZE, (y+TILE_SIZE-1)/TILE_SIZE);
+        if (topleft == 1 && bottomleft == 1){
+            x = (x/TILE_SIZE+1)*TILE_SIZE;
+            topleft = topright;
+            bottomleft = bottomright;
+        } else if (topright == 1 && bottomright == 1){
+            x = (x/TILE_SIZE)*TILE_SIZE;
+            topright = topleft;
+            bottomright = bottomleft;
+        }
+        if (topleft == 1 && topright == 1){
+            y = (y/TILE_SIZE+1)*TILE_SIZE;
+            yspeed = 0;
+        } else if ((bottomleft == 1 || bottomright == 1) && yspeed > 1){
+            y = (y/TILE_SIZE)*TILE_SIZE;
+            if (!jumping){
+                yspeed = 0;
+                falling = false;
+            } else {
+                yspeed = -TILE_SIZE/2;
+            }
+        }
+        if (!falling && bottomleft != 1 && bottomright != 1){
+            yspeed = 1;
+            falling = true;
+        }
+    }
 }
 

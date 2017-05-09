@@ -11,6 +11,8 @@
 
 #define SCALE 2
 
+#define PLAYER_HEIGHT 24
+
 #define BASE_SPEED 3
 #define DIAGONAL_SPEED 2
 
