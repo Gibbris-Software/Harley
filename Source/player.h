@@ -19,6 +19,8 @@ namespace Harley {
         int battle_x;
         int battle_y;
 
+        double multiplier;
+
         int animation_state;
 
         sf::IntRect front [2];
@@ -29,7 +31,7 @@ namespace Harley {
         sf::Sprite sprite;
 
         Ability ability;
-        SpecialAttack special_attack;
+        //SpecialAttack special_attack;
 
       public:
         Player();
@@ -42,8 +44,10 @@ namespace Harley {
 
         int getHealth();
         int getStamina();
-        int getSpeed();
-        int getDiagonalSpeed();
+        double getSpeed();
+        double getDiagonalSpeed();
+        void speedUp();
+        void slowDown();
         int getTileX();
         int getTileY();
 

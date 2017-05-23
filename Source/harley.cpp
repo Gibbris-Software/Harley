@@ -87,6 +87,9 @@ namespace Harley
             case sf::Keyboard::D:
                 currentSituation->startRight();
                 break;
+            case sf::Keyboard::Space:
+                currentPlayer->speedUp();
+                break;
             default:
                 std::cout << event.code << std::endl;
         }
@@ -106,6 +109,8 @@ namespace Harley
             case sf::Keyboard::D:
                 currentSituation->stopRight();
                 break;
+            case sf::Keyboard::Space:
+                currentPlayer->slowDown();
             default:
                 break;
         }

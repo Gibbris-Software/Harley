@@ -14,8 +14,8 @@ namespace Harley
         for (int x = 0; x < map->width(); x++){
             for (int y = 0; y < map->height(); y++){
                 if (map->tileAt(x, y) == 2){
-                    this->x = x*TILE_SIZE;
-                    this->y = y*TILE_SIZE;
+                    this->x = (double) x*TILE_SIZE;
+                    this->y = (double) y*TILE_SIZE;
                 }
             }
         }
@@ -82,24 +82,24 @@ namespace Harley
         } else if (movingLeft) {
             x -= character->getSpeed();
         }
-        int topleft = map->tileAt(x/TILE_SIZE, y/TILE_SIZE);
-        int topright = map->tileAt((x+TILE_SIZE-1)/TILE_SIZE, y/TILE_SIZE);
-        int bottomleft = map->tileAt(x/TILE_SIZE, (y+TILE_SIZE-1)/TILE_SIZE);
-        int bottomright = map->tileAt((x+TILE_SIZE-1)/TILE_SIZE, (y+TILE_SIZE-1)/TILE_SIZE);
+        int topleft = map->tileAt(((int) x)/TILE_SIZE, ((int) y)/TILE_SIZE);
+        int topright = map->tileAt((((int) x)+TILE_SIZE-1)/TILE_SIZE, ((int) y)/TILE_SIZE);
+        int bottomleft = map->tileAt(((int) x)/TILE_SIZE, (((int) y)+TILE_SIZE-1)/TILE_SIZE);
+        int bottomright = map->tileAt((((int) x)+TILE_SIZE-1)/TILE_SIZE, (((int) y)+TILE_SIZE-1)/TILE_SIZE);
         if (topleft == 1 && bottomleft == 1){
-            x = (x/TILE_SIZE+1)*TILE_SIZE;
+            x = (((int) x)/TILE_SIZE+1)*TILE_SIZE;
             topleft = topright;
             bottomleft = bottomright;
         } else if (topright == 1 && bottomright == 1){
-            x = (x/TILE_SIZE)*TILE_SIZE;
+            x = (((int) x)/TILE_SIZE)*TILE_SIZE;
             topright = topleft;
             bottomright = bottomleft;
         }
         if (topleft == 1 && topright == 1){
-            y = (y/TILE_SIZE+1)*TILE_SIZE;
+            y = (((int) y)/TILE_SIZE+1)*TILE_SIZE;
             yspeed = 0;
         } else if ((bottomleft == 1 || bottomright == 1) && yspeed > 1){
-            y = (y/TILE_SIZE)*TILE_SIZE;
+            y = (((int) y)/TILE_SIZE)*TILE_SIZE;
             if (!jumping){
                 yspeed = 0;
                 falling = false;

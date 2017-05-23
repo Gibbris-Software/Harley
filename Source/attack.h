@@ -3,9 +3,19 @@
 
 namespace Harley
 {
-    class SpecialAttack
+    class Attack
     {
-        /* To be implemented. */
+        int x;
+        int y;
+        int radius;
+        int strength;
+      public:
+        Attack(int, int, int, int);
+        int getX();
+        int getY();
+        int getRadius();
+        int getStrength();
+        virtual void update() = 0;
     };
 }
 

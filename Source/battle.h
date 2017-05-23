@@ -22,7 +22,7 @@ namespace Harley {
         bool falling;
         int yspeed;
 
-        int x, y;
+        double x, y;
 
       public:
         Battle(Player*, std::string);

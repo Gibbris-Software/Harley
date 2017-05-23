@@ -54,6 +54,29 @@ Advancement flags: (bools) (all default false)
  Collected Idimal's Power
  Returned to Anais
  Talked to King Terrance about the ship (Chapter 6)
+ Sailed to Fluoresca
+ Talked to Queen Apple
+ Entered Arena
+ Defeated Wood Golem XL
+ Defeated Mimicrazy
+ Defeated Queen Apple
+ Found Rosegold
+ Defeated Paul
+ Talked to Perseus while returning from Flouresca
+ Gave Rosegold to Terrance (Chapter 7)
+ Lost to Perseus
+ Defeated Perseus
+ Reached barrier
+ Defeated Harley (Chapter 8)
+ Broke barrier
+ Activated switch
+ Defeated Hydra
+ Defeated Praema
+ Killed Praema
+ Defeated Mavis
+ Defeated Third Assassin
+ Defeated Zephyr (Chapter 9)
+ Newgame+
 
 Abilites: (bools):
  LifeMe

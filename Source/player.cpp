@@ -27,6 +27,7 @@ namespace Harley
         sprite.setTexture(texture);
         sprite.setScale(SCALE, SCALE);
         animation_state = 0;
+        multiplier = 1;
         //ability = new HealthRegenAbility ();
         //special_attack = new SpecialAttack ();
     }
@@ -67,12 +68,20 @@ namespace Harley
         return stamina;
     }
 
-    int Player::getSpeed(){
-        return BASE_SPEED;
+    double Player::getSpeed(){
+        return BASE_SPEED*multiplier;
     }
 
-    int Player::getDiagonalSpeed(){
-        return DIAGONAL_SPEED;
+    double Player::getDiagonalSpeed(){
+        return DIAGONAL_SPEED*multiplier;
+    }
+
+    void Player::speedUp(){
+        multiplier = 1.5;
+    }
+
+    void Player::slowDown(){
+        multiplier = 1.0;
     }
 
     int Player::getTileX()
