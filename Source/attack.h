@@ -3,19 +3,13 @@
 
 namespace Harley
 {
-    class Attack
+    struct Attack
     {
         int x;
         int y;
         int radius;
         int strength;
-      public:
-        Attack(int, int, int, int);
-        int getX();
-        int getY();
-        int getRadius();
-        int getStrength();
-        virtual void update() = 0;
+        int type;
     };
 }
 

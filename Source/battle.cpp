@@ -1,7 +1,10 @@
-﻿#include "sfml.h"
+﻿#include <iostream>
+
+#include "sfml.h"
 
 #include "battle.h"
 #include "constants.h"
+#include "enemytest.h"
 
 namespace Harley
 {
@@ -22,6 +25,7 @@ namespace Harley
         character = player;
         movingRight = false;
         movingLeft = false;
+        enemies.push_back(new EnemyTest(this->x-TILE_SIZE, this->y));
     }
 
     void Battle::redraw(sf::RenderWindow &window)
@@ -32,6 +36,9 @@ namespace Harley
         sprite.setPosition(x*SCALE, (y+TILE_SIZE-PLAYER_HEIGHT)*SCALE);
         window.draw(sprite);
 
+        for (std::vector<Enemy*>::iterator enemy = enemies.begin(); enemy < enemies.end(); enemy++){
+            (*enemy)->redraw(window);
+        }
     }
 
     void Battle::startUp(){
@@ -110,6 +117,17 @@ namespace Harley
         if (!falling && bottomleft != 1 && bottomright != 1){
             yspeed = 1;
             falling = true;
+        }
+        float center_x = x + TILE_SIZE/2;
+        float center_y = y + TILE_SIZE/2;
+        for (std::vector<Enemy*>::iterator enemy = enemies.begin(); enemy < enemies.end(); enemy++){
+            (*enemy)->update();
+            std::vector<Attack> attacks = (*enemy)->getAttacks();
+            for (std::vector<Attack>::iterator attack = attacks.begin(); attack < attacks.end(); attack++){
+                if ((pow(attack->x - center_x, 2) + pow(attack->y - center_y, 2)) < pow(attack->radius + TILE_SIZE/2, 2)){
+                    exit(0);
+                }
+            }
         }
     }
 }
