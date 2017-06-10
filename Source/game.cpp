@@ -3,27 +3,17 @@
 #include "sfml.h"
 
 #include "constants.h"
-#include "harley.h"
-#include "situation.h"
-#include "player.h"
-#include "battle.h"
-#include "overworld.h"
+#include "game.h"
 
 
 namespace Harley
 {
-    Harley::Harley(){
+    Game::Game(): mode(OVERWORLD) {
         window.create(sf::VideoMode(SCALE*SCREEN_WIDTH, SCALE*SCREEN_HEIGHT), "Harley");
         window.setFramerateLimit(30);
-
-        currentPlayer = new Player ();
-
-        // battle = new Battle (&(*currentPlayer), "anais", &(*renderer));
-        overworld = new Overworld (&(*currentPlayer));
-        currentSituation = new Battle(&(*currentPlayer), "anais");
     }
 
-    void Harley::mainloop(){
+    void Game::mainloop(){
         sf::Event e;
         bool running = true;
         sf::Clock clock;
@@ -48,12 +38,14 @@ namespace Harley
                     case sf::Event::JoystickButtonPressed:
                         //std::cout << e.joystickButton.button << std::endl;
                         handleButtonPress(e.joystickButton);
-                        //     4                     5
+                        break;
+                        /*     4                     5
                         //   .-------.       .---------.
                         //  /         \_____/      3    \
                         //  |  9      6  8  7    2    1 |
                         //  |                      0    |
                         //                    10
+                        //*/
                     case sf::Event::JoystickButtonReleased:
                         handleButtonRelease(e.joystickButton);
                     case sf::Event::JoystickMoved:
@@ -64,74 +56,66 @@ namespace Harley
                 }
             }
             if (elapsedTime.asMilliseconds() - 100 > prevTime.asMilliseconds()){
-                currentPlayer->nextAnimation();
+                player.nextAnimation();
                 prevTime = elapsedTime;
             }
-            currentSituation->update();
-            currentSituation->redraw(window);
+            if (mode == OVERWORLD){
+                overworld.update(player, *this);
+                overworld.redraw(window, player);
+            } else if (mode == BATTLE){
+                battle.update(player, *this);
+                battle.redraw(window, player);
+            } else if (mode == HOUSE){
+                house.update(player, *this);
+                house.redraw(window, player);
+            } else if (mode == CITY){
+                city.update(player, *this);
+                city.redraw(window, player);
+            }
             window.display();
         }
     }
 
-    void Harley::handleKeyDown(sf::Event::KeyEvent event){
-        switch(event.code){
-            case sf::Keyboard::W:
-                currentSituation->startUp();
-                break;
-            case sf::Keyboard::S:
-                currentSituation->startDown();
-                break;
-            case sf::Keyboard::A:
-                currentSituation->startLeft();
-                break;
-            case sf::Keyboard::D:
-                currentSituation->startRight();
-                break;
-            case sf::Keyboard::Space:
-                currentPlayer->speedUp();
-                break;
-            default:
-                std::cout << event.code << std::endl;
+    void Game::handleKeyDown(sf::Event::KeyEvent event){
+        if (mode == OVERWORLD){
+            overworld.handleKeyDown(event);
+        } else if (mode == BATTLE){
+            battle.handleKeyDown(event);
+        } else if (mode == HOUSE){
+            house.handleKeyDown(event);
+        } else if (mode == CITY){
+            city.handleKeyDown(event);
         }
     }
 
-    void Harley::handleKeyUp(sf::Event::KeyEvent event){
-        switch(event.code){
-            case sf::Keyboard::W:
-                currentSituation->stopUp();
-                break;
-            case sf::Keyboard::S:
-                currentSituation->stopDown();
-                break;
-            case sf::Keyboard::A:
-                currentSituation->stopLeft();
-                break;
-            case sf::Keyboard::D:
-                currentSituation->stopRight();
-                break;
-            case sf::Keyboard::Space:
-                currentPlayer->slowDown();
-            default:
-                break;
+    void Game::handleKeyUp(sf::Event::KeyEvent event){
+        if (mode == OVERWORLD){
+            overworld.handleKeyUp(event);
+        } else if (mode == BATTLE){
+            battle.handleKeyUp(event);
+        } else if (mode == HOUSE){
+            house.handleKeyUp(event);
+        } else if (mode == CITY){
+            city.handleKeyUp(event);
         }
     }
 
-    void Harley::handleButtonPress(sf::Event::JoystickButtonEvent event){
+    void Game::handleButtonPress(sf::Event::JoystickButtonEvent event){
         switch(event.button){
             default:
                 break;
         }
     }
 
-    void Harley::handleButtonRelease(sf::Event::JoystickButtonEvent event){
+    void Game::handleButtonRelease(sf::Event::JoystickButtonEvent event){
         switch(event.button){
             default:
                 break;
         }
     }
 
-    void Harley::handleAxisMotion(sf::Event::JoystickMoveEvent event){
-        switch(event.axis){
+    void Game::handleAxisMotion(sf::Event::JoystickMoveEvent event){
+        /*switch(event.axis){
             case sf::Joystick::PovY:
                 if (event.position < 0){
                     currentSituation->startUp();
@@ -154,12 +138,10 @@ namespace Harley
                 break;
             default:
                 break;
-        }
+        }*/
     }
 
-    void Harley::quit(){
-        delete overworld;
-        delete currentPlayer;
+    void Game::quit(){
         window.close();
         // delete battle;
     }

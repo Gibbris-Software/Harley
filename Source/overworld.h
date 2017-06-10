@@ -4,16 +4,15 @@
 #include <string>
 
 #include "sfml.h"
-#include "situation.h"
+#include "area.h"
 #include "tile.h"
 #include "map.h"
 #include "player.h"
 
 namespace Harley {
-    class Overworld : public Situation {
-        Tileset *tiles;
-        Map *map;
-        Player *character;
+    class Overworld : Area {
+        Tileset tiles;
+        Map map;
 
         bool movingRight;
         bool movingLeft;
@@ -21,10 +20,8 @@ namespace Harley {
         bool movingDown;
 
         int speed;
+        int multiplier;
 
-      public:
-        Overworld(Player*);
-        void redraw(sf::RenderWindow&);
 		void startLeft();
 		void startRight();
 		void startUp();
@@ -33,7 +30,15 @@ namespace Harley {
 		void stopRight();
 		void stopUp();
 		void stopDown();
-		void update();
+        void slowDown();
+        void speedUp();
+
+      public:
+        Overworld();
+        void redraw(sf::RenderWindow&, Player& character);
+		void update(Player& character, Game&);
+		void handleKeyDown(sf::Event::KeyEvent);
+		void handleKeyUp(sf::Event::KeyEvent);
     };
 }
 

@@ -5,18 +5,17 @@
 #include <vector>
 
 #include "sfml.h"
-#include "situation.h"
+#include "area.h"
 #include "tile.h"
 #include "map.h"
-#include "player.h"
 #include "enemy.h"
 
+
 namespace Harley {
-    class Battle : public Situation {
+    class Battle : public Area {
         sf::Texture background_texture;
         sf::Sprite background;
-        Map *map;
-        Player *character;
+        Map tile_map;
 
         bool movingRight;
         bool movingLeft;
@@ -28,9 +27,6 @@ namespace Harley {
 
         std::vector<Enemy*> enemies;
 
-      public:
-        Battle(Player*, std::string);
-        void redraw(sf::RenderWindow&);
 		void startLeft();
 		void startRight();
 		void startUp();
@@ -39,7 +35,15 @@ namespace Harley {
 		void stopRight();
 		void stopUp();
 		void stopDown();
-		void update();
+        void counter();
+      public:
+        Battle(){};
+        void load(std::string);
+        void redraw(sf::RenderWindow&, Player&);
+		void update(Player&, Game&);
+		void handleKeyDown(sf::Event::KeyEvent);
+		void handleKeyUp(sf::Event::KeyEvent);
+		~Battle(){};
     };
 }
 

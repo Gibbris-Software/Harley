@@ -5,8 +5,11 @@
 
 namespace Harley
 {
-	Tileset::Tileset (std::string location)
+	Tileset::Tileset(){}
+
+	void Tileset::load (std::string location)
     {
+        filename = location;
         sheet.loadFromFile(location);
         sheet.setSmooth(false);
         width = sheet.getSize().x / TILE_SIZE;

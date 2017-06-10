@@ -6,7 +6,9 @@
 
 namespace Harley
 {
-	Map::Map (std::string name, int width, int height, int chunk_width, int chunk_height)
+    Map::Map(){}
+
+	void Map::load_chunks(std::string name, int width, int height, int chunk_width, int chunk_height)
     {
         std::string line;
         int tiles[height][width];
@@ -49,7 +51,7 @@ namespace Harley
         }
     }
 
-    Map::Map(std::string name){
+    void Map::load(std::string name){
         std::ifstream content(("Resources/" + name + ".csv").c_str());
         std::string line;
         while (std::getline(content, line)){

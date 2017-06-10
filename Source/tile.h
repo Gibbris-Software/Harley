@@ -10,8 +10,10 @@ namespace Harley {
         sf::Sprite sprite;
         int width;
         int height;
+        std::string filename;
       public:
-        Tileset(std::string);
+        Tileset();
+        void load(std::string);
         void renderTile(int, int, int, sf::RenderWindow&);
     };
 }

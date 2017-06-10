@@ -1,15 +1,22 @@
-﻿#include <iostream>
-#include "sfml.h"
-#include "overworld.h"
-#include "constants.h"
+#include "city.h"
+#include "player.h"
 #include "game.h"
+#include "constants.h"
 
-namespace Harley
-{
-    Overworld::Overworld ()
+namespace Harley {
+    City::City()
     {
+        //ctor
+    }
+
+    City::~City()
+    {
+        //dtor
+    }
+
+    void City::load(std::string which, int x, int y){
         tiles.load("Resources/anais.png");
-        map.load_chunks("Resources/beauve", 1440, 960, 3, 3);
+        map.load("Resources/"+which+".city");
         movingRight = false;
         movingUp = false;
         movingLeft = false;
@@ -17,7 +24,7 @@ namespace Harley
         speed = BASE_SPEED;
     }
 
-    void Overworld::redraw(sf::RenderWindow& window, Player& character)
+    void City::redraw(sf::RenderWindow& window, Player& character)
     {
         int startX = std::max(0, (character.getTileX()/TILE_SIZE)-(TILE_WIDTH+1)/2);
         int startY = std::max(0, (character.getTileY()/TILE_SIZE)-(TILE_HEIGHT+1)/2);
@@ -40,7 +47,7 @@ namespace Harley
         window.draw(sprite);
     }
 
-    void Overworld::startUp(){
+    void City::startUp(){
         movingUp = true;
         movingDown = false;
         if (movingLeft || movingRight) {
@@ -48,7 +55,7 @@ namespace Harley
         }
     }
 
-    void Overworld::startDown(){
+    void City::startDown(){
         movingDown = true;
         movingUp = false;
         if (movingLeft || movingRight) {
@@ -56,7 +63,7 @@ namespace Harley
         }
     }
 
-    void Overworld::startLeft(){
+    void City::startLeft(){
         movingLeft = true;
         movingRight = false;
         if (movingUp || movingDown) {
@@ -64,7 +71,7 @@ namespace Harley
         }
     }
 
-    void Overworld::startRight ()
+    void City::startRight ()
     {
         movingRight = true;
         movingLeft = false;
@@ -73,36 +80,36 @@ namespace Harley
         }
     }
 
-    void Overworld::stopUp(){
+    void City::stopUp(){
         movingUp = false;
         speed = BASE_SPEED;
     }
 
-    void Overworld::stopDown(){
+    void City::stopDown(){
         movingDown = false;
         speed = BASE_SPEED;
     }
 
-    void Overworld::stopLeft(){
+    void City::stopLeft(){
         movingLeft = false;
         speed = BASE_SPEED;
     }
 
-    void Overworld::stopRight ()
+    void City::stopRight ()
     {
         movingRight = false;
         speed = BASE_SPEED;
     }
 
-    void Overworld::slowDown(){
+    void City::slowDown(){
         multiplier = 1;
     }
 
-    void Overworld::speedUp(){
+    void City::speedUp(){
         multiplier = 2;
     }
 
-    void Overworld::handleKeyDown(sf::Event::KeyEvent event){
+    void City::handleKeyDown(sf::Event::KeyEvent event){
         switch(event.code){
             case sf::Keyboard::W:
                 startUp();
@@ -121,7 +128,7 @@ namespace Harley
         }
     }
 
-    void Overworld::handleKeyUp(sf::Event::KeyEvent event){
+    void City::handleKeyUp(sf::Event::KeyEvent event){
         switch(event.code){
             case sf::Keyboard::W:
                 stopUp();
@@ -140,7 +147,7 @@ namespace Harley
         }
     }
 
-    void Overworld::update(Player& character, Game& game){
+    void City::update(Player& character, Game& game){
         if (movingUp) {
             character.moveUpTile (speed);
         } else if (movingDown) {
@@ -154,4 +161,3 @@ namespace Harley
         }
     }
 }
-

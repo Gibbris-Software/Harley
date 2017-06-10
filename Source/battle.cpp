@@ -5,34 +5,34 @@
 #include "battle.h"
 #include "constants.h"
 #include "enemytest.h"
+#include "player.h"
 
 namespace Harley
 {
-    Battle::Battle (Player *player, std::string where)
+    void Battle::load(std::string where)
     {
         background_texture.loadFromFile("Resources/"+where+"_battle.png");
         background.setTexture(background_texture);
         background.setScale(SCALE, SCALE);
-        map = new Map (where + "_battle");
-        for (int x = 0; x < map->width(); x++){
-            for (int y = 0; y < map->height(); y++){
-                if (map->tileAt(x, y) == 2){
+        tile_map.load(where + "_battle");
+        for (int x = 0; x < tile_map.width(); x++){
+            for (int y = 0; y < tile_map.height(); y++){
+                if (tile_map.tileAt(x, y) == 2){
                     this->x = (double) x*TILE_SIZE;
                     this->y = (double) y*TILE_SIZE;
                 }
             }
         }
-        character = player;
         movingRight = false;
         movingLeft = false;
         enemies.push_back(new EnemyTest(this->x-TILE_SIZE, this->y));
     }
 
-    void Battle::redraw(sf::RenderWindow &window)
+    void Battle::redraw(sf::RenderWindow &window, Player& character)
     {
         window.draw(background);
 
-        sf::Sprite sprite = character->direction(movingRight-movingLeft, 0);
+        sf::Sprite sprite = character.direction(movingRight-movingLeft, 0);
         sprite.setPosition(x*SCALE, (y+TILE_SIZE-PLAYER_HEIGHT)*SCALE);
         window.draw(sprite);
 
@@ -79,20 +79,59 @@ namespace Harley
         movingRight = false;
     }
 
-    void Battle::update(){
+    void Battle::handleKeyDown(sf::Event::KeyEvent event){
+        switch(event.code){
+            case sf::Keyboard::W:
+                startUp();
+                break;
+            case sf::Keyboard::S:
+                startDown();
+                break;
+            case sf::Keyboard::A:
+                startLeft();
+                break;
+            case sf::Keyboard::D:
+                startRight();
+                break;
+        }
+    }
+
+    void Battle::counter(){
+
+    }
+
+    void Battle::handleKeyUp(sf::Event::KeyEvent event){
+        switch(event.code){
+            case sf::Keyboard::W:
+                stopUp();
+                break;
+            case sf::Keyboard::S:
+                stopDown();
+                break;
+            case sf::Keyboard::A:
+                stopLeft();
+                break;
+            case sf::Keyboard::D:
+                stopRight();
+                break;
+            case sf::Keyboard::LShift:
+                counter();
+        }
+    }
+    void Battle::update(Player& character, Game& game){
         if (falling){
             y += yspeed;
             yspeed += 1;
         }
         if (movingRight) {
-            x += character->getSpeed();
+            x += character.getSpeed();
         } else if (movingLeft) {
-            x -= character->getSpeed();
+            x -= character.getSpeed();
         }
-        int topleft = map->tileAt(((int) x)/TILE_SIZE, ((int) y)/TILE_SIZE);
-        int topright = map->tileAt((((int) x)+TILE_SIZE-1)/TILE_SIZE, ((int) y)/TILE_SIZE);
-        int bottomleft = map->tileAt(((int) x)/TILE_SIZE, (((int) y)+TILE_SIZE-1)/TILE_SIZE);
-        int bottomright = map->tileAt((((int) x)+TILE_SIZE-1)/TILE_SIZE, (((int) y)+TILE_SIZE-1)/TILE_SIZE);
+        int topleft = tile_map.tileAt(((int) x)/TILE_SIZE, ((int) y)/TILE_SIZE);
+        int topright = tile_map.tileAt((((int) x)+TILE_SIZE-1)/TILE_SIZE, ((int) y)/TILE_SIZE);
+        int bottomleft = tile_map.tileAt(((int) x)/TILE_SIZE, (((int) y)+TILE_SIZE-1)/TILE_SIZE);
+        int bottomright = tile_map.tileAt((((int) x)+TILE_SIZE-1)/TILE_SIZE, (((int) y)+TILE_SIZE-1)/TILE_SIZE);
         if (topleft == 1 && bottomleft == 1){
             x = (((int) x)/TILE_SIZE+1)*TILE_SIZE;
             topleft = topright;
