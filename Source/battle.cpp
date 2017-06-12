@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <cmath>
 
 #include "sfml.h"
 
@@ -163,7 +164,7 @@ namespace Harley
             (*enemy)->update();
             std::vector<Attack> attacks = (*enemy)->getAttacks();
             for (std::vector<Attack>::iterator attack = attacks.begin(); attack < attacks.end(); attack++){
-                if ((pow(attack->x - center_x, 2) + pow(attack->y - center_y, 2)) < pow(attack->radius + TILE_SIZE/2, 2)){
+                if ((std::pow(attack->x - center_x, 2) + std::pow(attack->y - center_y, 2)) < std::pow(attack->radius + TILE_SIZE/2, 2)){
                     exit(0);
                 }
             }

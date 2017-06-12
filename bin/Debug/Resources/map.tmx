@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="480" height="320" tilewidth="16" tileheight="16" nextobjectid="11">
- <tileset firstgid="1" name="World" tilewidth="16" tileheight="16" tilecount="256" columns="16">
+ <tileset firstgid="1" name="World" tilewidth="16" tileheight="16" tilecount="256">
   <image source="anais.png" width="256" height="256"/>
   <terraintypes>
    <terrain name="Grass" tile="0"/>
@@ -131,7 +131,7 @@
   <tile id="137" terrain="7,7,0,0"/>
   <tile id="144" terrain="0,1,2,2"/>
  </tileset>
- <tileset firstgid="257" name="Map" tilewidth="480" tileheight="320" tilecount="9" columns="3">
+ <tileset firstgid="257" name="Map" tilewidth="480" tileheight="320" tilecount="9">
   <image source="../Concept Art/BeauveMap.png" width="1440" height="960"/>
  </tileset>
  <layer name="1_1" width="480" height="320" visible="0">
