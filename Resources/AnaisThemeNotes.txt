@@ -6,8 +6,10 @@ Strings
 Bells
 Clarinet
 Bass Clarinet
+Acoustic Guitar
 
 Tempo: 80 BPM 4/4ths time
+Key of D Major, B Minor
 Mood: Kind and Warm
 
 Inspiration:
