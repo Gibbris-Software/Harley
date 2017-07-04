@@ -11,6 +11,9 @@ namespace Harley
     Game::Game(): mode(OVERWORLD) {
         window.create(sf::VideoMode(SCALE*SCREEN_WIDTH, SCALE*SCREEN_HEIGHT), "Harley");
         window.setFramerateLimit(30);
+        anais.openFromFile("Resources/anais.wav");
+        anais.setLoop(true);
+        anais.play();
     }
 
     void Game::mainloop(){

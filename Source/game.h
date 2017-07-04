@@ -35,6 +35,8 @@ namespace Harley
         void handleKeyDown(sf::Event::KeyEvent);
         void handleKeyUp(sf::Event::KeyEvent);
 
+        sf::Music anais;
+
       public:
         Game ();
 
