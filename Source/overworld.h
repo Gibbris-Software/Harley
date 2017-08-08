@@ -33,6 +33,7 @@ namespace Harley {
         std::vector<NPC> npcs;
         possum::Scene scene;
         bool created;
+        sf::Texture tiles;
 
       public:
         Overworld(){};

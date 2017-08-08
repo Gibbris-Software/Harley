@@ -9,7 +9,6 @@ namespace Harley
     void Overworld::setup(possum::Game& game)
     {
         if (!created){
-            sf::Texture tiles;
             tiles.loadFromFile("Resources/anais.png");
             tiles.setSmooth(false);
             possum::Entity& tileset = scene.create(MAP, 0, 0, 0, tiles);
