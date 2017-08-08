@@ -4,7 +4,7 @@
 #include "constants.h"
 
 namespace Harley {
-    House::House()
+/*    House::House()
     {
         //ctor
     }
@@ -159,5 +159,5 @@ namespace Harley {
         } else if (movingLeft) {
             character.moveLeftTile (speed);
         }
-    }
+    }*/
 }

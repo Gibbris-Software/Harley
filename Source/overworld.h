@@ -8,12 +8,10 @@
 #include "tile.h"
 #include "map.h"
 #include "player.h"
+#include "npc.h"
 
 namespace Harley {
-    class Overworld : Area {
-        Tileset tiles;
-        Map map;
-
+    class Overworld {
         bool movingRight;
         bool movingLeft;
         bool movingUp;
@@ -32,13 +30,13 @@ namespace Harley {
 		void stopDown();
         void slowDown();
         void speedUp();
+        std::vector<NPC> npcs;
+        possum::Scene scene;
+        bool created;
 
       public:
-        Overworld();
-        void redraw(sf::RenderWindow&, Player& character);
-		void update(Player& character, Game&);
-		void handleKeyDown(sf::Event::KeyEvent);
-		void handleKeyUp(sf::Event::KeyEvent);
+        Overworld(){};
+        void setup(possum::Game&);
     };
 }
 

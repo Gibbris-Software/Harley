@@ -1,5 +1,5 @@
-#ifndef __BATTLE_H_
-#define __BATTLE_H_
+#ifndef BATTLE_H
+#define BATTLE_H
 
 #include <string>
 #include <vector>
@@ -15,7 +15,7 @@ namespace Harley {
     class Battle : public Area {
         sf::Texture background_texture;
         sf::Sprite background;
-        Map tile_map;
+        // Map tile_map;
 
         bool movingRight;
         bool movingLeft;

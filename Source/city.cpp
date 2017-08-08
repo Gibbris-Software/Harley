@@ -13,7 +13,7 @@ namespace Harley {
     {
         //dtor
     }
-
+/*
     void City::load(std::string which, int x, int y){
         tiles.load("Resources/anais.png");
         map.load("Resources/"+which+".city");
@@ -159,5 +159,5 @@ namespace Harley {
         } else if (movingLeft) {
             character.moveLeftTile (speed);
         }
-    }
+    */
 }

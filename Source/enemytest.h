@@ -1,5 +1,5 @@
-#ifndef __ENEMYTEST_H_
-#define __ENEMYTEST_H_
+#ifndef ENEMYTEST_H
+#define ENEMYTEST_H
 
 #include "enemy.h"
 #include "attack.h"

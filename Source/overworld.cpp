@@ -6,34 +6,29 @@
 
 namespace Harley
 {
-    Overworld::Overworld ()
+    void Overworld::setup(possum::Game& game)
     {
-        tiles.load("Resources/anais.png");
-        map.load_chunks("Resources/beauve", 1440, 960, 3, 3);
-        movingRight = false;
-        movingUp = false;
-        movingLeft = false;
-        movingDown = false;
-        speed = BASE_SPEED;
+        if (!created){
+            sf::Texture tiles;
+            tiles.loadFromFile("Resources/anais.png");
+            tiles.setSmooth(false);
+            possum::Entity& tileset = scene.create(MAP, 0, 0, 0, tiles);
+            tileset.sprite.setScale(SCALE, SCALE);
+            tileset.sprite.setOrigin(0, 0);
+            Map::load_chunks(tileset, "Resources/beauve", 1440, 960, 3, 3);
+            // map.load("npc_test");
+            movingRight = false;
+            movingUp = false;
+            movingLeft = false;
+            movingDown = false;
+            speed = BASE_SPEED;
+        }
+        game.setScene(&scene);
+        // npcs.push_back(new NPC("mia"));
     }
 
-    void Overworld::redraw(sf::RenderWindow& window, Player& character)
+/*    void Overworld::redraw(sf::RenderWindow& window, Player& character)
     {
-        int startX = std::max(0, (character.getTileX()/TILE_SIZE)-(TILE_WIDTH+1)/2);
-        int startY = std::max(0, (character.getTileY()/TILE_SIZE)-(TILE_HEIGHT+1)/2);
-        int endX = std::min(map.width(), startX+TILE_WIDTH);
-        int endY = std::min(map.height()-1, startY+TILE_HEIGHT);
-        startX = endX - TILE_WIDTH;
-        startY = endY - TILE_HEIGHT;
-        int centerX = std::max(std::min(character.getTileX(), map.width()*TILE_SIZE-SCREEN_WIDTH/2), SCREEN_WIDTH/2);
-        int centerY = std::max(std::min(character.getTileY(), map.height()*TILE_SIZE-SCREEN_HEIGHT/2), SCREEN_HEIGHT/2);
-        // std::cout << endX << ", " << endY << ", " << character->getTileX() / TILE_SIZE << ", " << character->getTileY() / TILE_SIZE << std::endl;
-        for (int i = startX; i <= endX; i++) {
-        	for (int j = startY; j <= endY; j++) {
-        		int tile = map.tileAt(i, j);
-                tiles.renderTile(tile, (TILE_SIZE*i)-centerX + SCREEN_WIDTH/2, (TILE_SIZE*j)-centerY+SCREEN_HEIGHT/2, window);
-        	}
-        }
         // character->next_animation();
         sf::Sprite sprite = character.direction(movingRight-movingLeft, movingDown-movingUp);
         sprite.setPosition((character.getTileX()-centerX+SCREEN_WIDTH/2)*SCALE, (character.getTileY()-centerY+SCREEN_HEIGHT/2)*SCALE);
@@ -152,6 +147,6 @@ namespace Harley
         } else if (movingLeft) {
             character.moveLeftTile (speed);
         }
-    }
+    }*/
 }
 

@@ -1,7 +1,9 @@
-#ifndef __HARLEY_H_
-#define __HARLEY_H_
+#ifndef HARLEY_H
+#define HARLEY_H
 
 #include "sfml.h"
+
+#include "possum/possum.h"
 
 #include "player.h"
 #include "overworld.h"
@@ -11,29 +13,12 @@
 
 namespace Harley
 {
-    enum Situation {
-        OVERWORLD,
-        BATTLE,
-        HOUSE,
-        CITY
-    };
-
     class Game
     {
         sf::RenderWindow window;
-        Battle battle;
         Overworld overworld;
-        House house;
-        City city;
         Player player;
-        Situation mode;
-        Situation lastMode;
-
-        void handleButtonPress(sf::Event::JoystickButtonEvent);
-        void handleButtonRelease(sf::Event::JoystickButtonEvent);
-        void handleAxisMotion(sf::Event::JoystickMoveEvent);
-        void handleKeyDown(sf::Event::KeyEvent);
-        void handleKeyUp(sf::Event::KeyEvent);
+        possum::Game game;
 
         sf::Music anais;
 

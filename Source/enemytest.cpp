@@ -1,5 +1,6 @@
 #include "enemytest.h"
 #include "constants.h"
+#include "sfml.h"
 
 namespace Harley{
     EnemyTest::EnemyTest(int x, int y)

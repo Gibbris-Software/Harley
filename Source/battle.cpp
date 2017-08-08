@@ -9,7 +9,7 @@
 #include "player.h"
 
 namespace Harley
-{
+{/*
     void Battle::load(std::string where)
     {
         background_texture.loadFromFile("Resources/"+where+"_battle.png");
@@ -169,6 +169,6 @@ namespace Harley
                 }
             }
         }
-    }
+    }*/
 }
 

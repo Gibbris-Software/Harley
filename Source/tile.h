@@ -1,11 +1,11 @@
-#ifndef __TILE_H_
-#define __TILE_H_
+#ifndef TILE_H
+#define TILE_H
 
 #include <string>
 #include "sfml.h"
 
 namespace Harley {
-    class Tileset {
+    /*class Tileset {
         sf::Texture sheet;
         sf::Sprite sprite;
         int width;
@@ -15,7 +15,7 @@ namespace Harley {
         Tileset();
         void load(std::string);
         void renderTile(int, int, int, sf::RenderWindow&);
-    };
+    };*/
 }
 
 #endif // __TILE_H_

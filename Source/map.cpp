@@ -3,15 +3,41 @@
 #include <sstream>
 #include <iostream>
 #include "map.h"
+#include "constants.h"
+
+//Event callbacks
+void redraw(possum::Entity& entity, possum::State& gameState, void* data){
+    sf::RenderWindow& window = *(sf::RenderWindow*)(data);
+    int startX = std::max(0, (gameState.get("tileX")/TILE_SIZE)-(TILE_WIDTH+1)/2);
+    int startY = std::max(0, (gameState.get("tileY")/TILE_SIZE)-(TILE_HEIGHT+1)/2);
+    int endX = std::min(entity.state.get("width"), startX+TILE_WIDTH);
+    int endY = std::min(entity.state.get("height")-1, startY+TILE_HEIGHT);
+    startX = endX - TILE_WIDTH;
+    startY = endY - TILE_HEIGHT;
+    int centerX = std::max(std::min(gameState.get("tileX"), entity.state.get("width")*TILE_SIZE-SCREEN_WIDTH/2), SCREEN_WIDTH/2);
+    int centerY = std::max(std::min(gameState.get("tileY"), entity.state.get("height")*TILE_SIZE-SCREEN_HEIGHT/2), SCREEN_HEIGHT/2);
+    // std::cout << endX << ", " << endY << ", " << character->getTileX() / TILE_SIZE << ", " << character->getTileY() / TILE_SIZE << std::endl;
+    for (int i = startX; i <= endX; i++) {
+        for (int j = startY; j <= endY; j++) {
+            std::stringstream location;
+            location << i << " " << j;
+            int tile = entity.state.get(location.str());
+            int tx = tile % entity.state.get("tilesetWidth");
+            int ty = tile / entity.state.get("tilesetWidth");
+            entity.sprite.setTextureRect(sf::IntRect(tx*TILE_SIZE, ty*TILE_SIZE, TILE_SIZE, TILE_SIZE));
+            entity.sprite.setPosition(((TILE_SIZE*i)-centerX + SCREEN_WIDTH/2)*SCALE, ((TILE_SIZE*j)-centerY+SCREEN_HEIGHT/2)*SCALE);
+
+            window.draw(entity.sprite);
+        }
+    }
+}
 
 namespace Harley
 {
-    Map::Map(){}
 
-	void Map::load_chunks(std::string name, int width, int height, int chunk_width, int chunk_height)
+	void Map::load_chunks(possum::Entity& entity, std::string name, int width, int height, int chunk_width, int chunk_height)
     {
         std::string line;
-        int tiles[height][width];
         int chunk_x_offset = 0;
         int chunk_y_offset = 0;
         int chunk_x_increment = width / chunk_width;
@@ -30,7 +56,9 @@ namespace Harley
                     int i;
                     char c;
                     while (data >> i){
-                        tiles[chunk_y_offset+y][chunk_x_offset+x] = i;
+                        std::stringstream location;
+                        location << chunk_y_offset + y << " " << chunk_x_offset + x;
+                        entity.state.set(location.str(), i);
                         x++;
                         data >> c;
                     }
@@ -40,43 +68,36 @@ namespace Harley
             }
             chunk_x_offset += chunk_x_increment;
         }
-        for (int y = 0; y < height; y++){
-            std::vector<int> row;
-            for (int x = 0; x < width; x++){
-                //std::cout << tiles[y][x] << ", ";
-                row.push_back(tiles[y][x]);
-            }
-            //std::cout << std::endl;
-            this->tiles.push_back(row);
-        }
+        entity.state.set("width", width);
+        entity.state.set("height", height);
+        entity.state.set("tilesetWidth", entity.texture.getSize().x/TILE_SIZE);
+        entity.register_event(possum::REDRAW, redraw);
     }
 
-    void Map::load(std::string name){
+    void Map::load(possum::Entity& entity, std::string name){
         std::ifstream content(("Resources/" + name + ".csv").c_str());
         std::string line;
+        int y = 0;
+        int x;
         while (std::getline(content, line)){
-            std::vector<int> row;
             std::istringstream data(line);
+            x = 0;
             int i;
             char c;
             while (data >> i){
-                row.push_back(i);
+                std::stringstream location;
+                location << y << " " << x;
+                entity.state.set(location.str(), i);
+                x++;
                 data >> c;
             }
-            tiles.push_back(row);
+            y += 1;
         }
+        entity.state.set("width", x-1);
+        entity.state.set("height", y-1);
+        entity.state.set("tilesetWidth", entity.texture.getSize().x/TILE_SIZE);
+        entity.register_event(possum::REDRAW, redraw);
     }
 
-    int Map::tileAt(int x, int y){
-        return tiles[y][x];
-    }
-
-    int Map::width(){
-        return tiles[0].size();
-    }
-
-    int Map::height(){
-        return tiles.size();
-    }
 }
 

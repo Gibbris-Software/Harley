@@ -16,4 +16,12 @@
 #define BASE_SPEED 3
 #define DIAGONAL_SPEED 2
 
+enum EntityTypes {
+    MAP,
+    PLAYER,
+    ENEMY,
+    NPC,
+    OBSTACLE,
+};
+
 #endif // __CONSTANTS_H_

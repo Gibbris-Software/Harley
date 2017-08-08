@@ -12,15 +12,15 @@ namespace Harley {
         public:
             House();
             virtual ~House();
-            void redraw(sf::RenderWindow&, Player& character);
+            /*void redraw(sf::RenderWindow&, Player& character);
             void update(Player& character, Game&);
             void handleKeyDown(sf::Event::KeyEvent);
             void handleKeyUp(sf::Event::KeyEvent);
             void load(std::string, int, int);
         protected:
         private:
-            Tileset tiles;
-            Map map;
+            // Tileset tiles;
+            // Map map;
 
             bool movingRight;
             bool movingLeft;
@@ -39,7 +39,7 @@ namespace Harley {
             void stopUp();
             void stopDown();
             void slowDown();
-            void speedUp();
+            void speedUp();*/
     };
 }
 
