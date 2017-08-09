@@ -4,6 +4,7 @@
 #include "sfml.h"
 #include "ability.h"
 #include "attack.h"
+#include "possum/possum.h"
 
 namespace Harley {
     class Player {
@@ -62,6 +63,8 @@ namespace Harley {
 
         void nextAnimation();
         sf::Sprite direction(int, int);
+
+        void create(possum::Scene&);
     };
 }
 

@@ -1,5 +1,90 @@
 ﻿#include "player.h"
 #include "constants.h"
+#include <string>
+
+
+enum directions {
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT,
+};
+
+//Event callbacks
+void redraw_player(possum::Entity& entity, possum::State& gameState, void* data){
+    sf::RenderWindow& window = *(sf::RenderWindow*)(data);
+    int centerX = std::max(std::min(gameState.get("tileX"), gameState.get("mapWidth")*TILE_SIZE-SCREEN_WIDTH/2), SCREEN_WIDTH/2);
+    int centerY = std::max(std::min(gameState.get("tileY"), gameState.get("mapHeight")*TILE_SIZE-SCREEN_HEIGHT/2), SCREEN_HEIGHT/2);
+    entity.sprite.setPosition((entity.x-centerX+SCREEN_WIDTH/2)*SCALE, (entity.y-centerY+SCREEN_HEIGHT/2)*SCALE);
+    window.draw(entity.sprite);
+}
+
+void update_player(possum::Entity& entity, possum::State& gameState, void* data){
+    sf::Time time = *(sf::Time*)(data);
+    gameState.set("tileX", entity.x);
+    gameState.set("tileY", entity.y);
+    if (entity.state.get("moving") != 0){
+        int a = entity.state.get("animationState") + 1;
+        if (a == 2){
+            a = 0;
+        }
+        entity.state.set("animationState", a);
+        std::string prefix = std::to_string(entity.state.get("direction"))+"_"+std::to_string(a);
+        entity.sprite.setTextureRect(sf::IntRect(entity.state.get(prefix+"_x"), entity.state.get(prefix+"_y"), 16, 24));
+        switch(entity.state.get("direction")){
+            case UP:
+                entity.y -= time.asMilliseconds()/60;
+                break;
+            case DOWN:
+                entity.y += time.asMilliseconds()/60;
+                break;
+            case LEFT:
+                entity.x -= time.asMilliseconds()/60;
+                break;
+            case RIGHT:
+                entity.x += time.asMilliseconds()/60;
+                break;
+        }
+    }
+}
+
+void handle_keydown_player(possum::Entity& entity, possum::State& gameState, void* data){
+    sf::Event::KeyEvent event = *(sf::Event::KeyEvent*)(data);
+    switch (event.code){
+        case sf::Keyboard::S:
+            entity.state.set("moving", 1);
+            entity.state.set("direction", DOWN);
+            break;
+        case sf::Keyboard::W:
+            entity.state.set("moving", 1);
+            entity.state.set("direction", UP);
+            break;
+        case sf::Keyboard::A:
+            entity.state.set("moving", 1);
+            entity.state.set("direction", LEFT);
+            break;
+        case sf::Keyboard::D:
+            entity.state.set("moving", 1);
+            entity.state.set("direction", RIGHT);
+            break;
+        default:
+            break;
+    }
+}
+
+void handle_keyup_player(possum::Entity& entity, possum::State& gameState, void* data){
+    sf::Event::KeyEvent event = *(sf::Event::KeyEvent*)(data);
+    switch (event.code){
+        case sf::Keyboard::S:
+        case sf::Keyboard::A:
+        case sf::Keyboard::W:
+        case sf::Keyboard::D:
+            entity.state.set("moving", 0);
+            break;
+        default:
+            break;
+    }
+}
 
 namespace Harley
 {
@@ -24,12 +109,40 @@ namespace Harley
         left[1] = sf::IntRect(48, 24, 16, 24);
         right[0] = sf::IntRect(32, 0, 16, 24);
         right[1] = sf::IntRect(48, 0, 16, 24);
-        sprite.setTexture(texture);
-        sprite.setScale(SCALE, SCALE);
         animation_state = 0;
         multiplier = 1;
         //ability = new HealthRegenAbility ();
         //special_attack = new SpecialAttack ();
+    }
+
+    void Player::create(possum::Scene& scene){
+        possum::Entity& entity = scene.create(PLAYER, tile_x, tile_y, TILE_SIZE, texture);
+        entity.sprite.setScale(SCALE, SCALE);
+        entity.sprite.setOrigin(8, 16);
+        entity.sprite.setTextureRect(sf::IntRect(0, 0, 16, 24));
+        entity.register_event(possum::REDRAW, redraw_player);
+        entity.register_event(possum::UPDATE, update_player);
+        entity.register_event(possum::KEY_DOWN, handle_keydown_player);
+        entity.register_event(possum::KEY_UP, handle_keyup_player);
+        entity.state.set("moving", 0);
+        entity.state.set("animationState", 0);
+        entity.state.set("direction", DOWN);
+        entity.state.set(std::to_string(DOWN)+"_0_x", 0);
+        entity.state.set(std::to_string(DOWN)+"_0_y", 0);
+        entity.state.set(std::to_string(DOWN)+"_1_x", 16);
+        entity.state.set(std::to_string(DOWN)+"_1_y", 0);
+        entity.state.set(std::to_string(UP)+"_0_x", 0);
+        entity.state.set(std::to_string(UP)+"_0_y", 24);
+        entity.state.set(std::to_string(UP)+"_1_x", 16);
+        entity.state.set(std::to_string(UP)+"_1_y", 24);
+        entity.state.set(std::to_string(LEFT)+"_0_x", 32);
+        entity.state.set(std::to_string(LEFT)+"_0_y", 24);
+        entity.state.set(std::to_string(LEFT)+"_1_x", 48);
+        entity.state.set(std::to_string(LEFT)+"_1_y", 24);
+        entity.state.set(std::to_string(RIGHT)+"_0_x", 32);
+        entity.state.set(std::to_string(RIGHT)+"_0_y", 0);
+        entity.state.set(std::to_string(RIGHT)+"_1_x", 48);
+        entity.state.set(std::to_string(RIGHT)+"_1_y", 0);
     }
 
 
@@ -43,7 +156,7 @@ namespace Harley
         /* To be implemented. */
     }
 
-     void Player::special()
+    void Player::special()
     {
         /* To be implemented. */
     }

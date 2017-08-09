@@ -15,12 +15,8 @@ namespace Harley
             tileset.sprite.setScale(SCALE, SCALE);
             tileset.sprite.setOrigin(0, 0);
             Map::load_chunks(tileset, "Resources/beauve", 1440, 960, 3, 3);
+            player.create(scene);
             // map.load("npc_test");
-            movingRight = false;
-            movingUp = false;
-            movingLeft = false;
-            movingDown = false;
-            speed = BASE_SPEED;
         }
         game.setScene(&scene);
         // npcs.push_back(new NPC("mia"));

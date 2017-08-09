@@ -12,25 +12,8 @@
 
 namespace Harley {
     class Overworld {
-        bool movingRight;
-        bool movingLeft;
-        bool movingUp;
-        bool movingDown;
+        Player player;
 
-        int speed;
-        int multiplier;
-
-		void startLeft();
-		void startRight();
-		void startUp();
-		void startDown();
-		void stopLeft();
-		void stopRight();
-		void stopUp();
-		void stopDown();
-        void slowDown();
-        void speedUp();
-        std::vector<NPC> npcs;
         possum::Scene scene;
         bool created;
         sf::Texture tiles;
