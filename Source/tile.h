@@ -18,4 +18,4 @@ namespace Harley {
     };*/
 }
 
-#endif // __TILE_H_
+#endif // TILE_H

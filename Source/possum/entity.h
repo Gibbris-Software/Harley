@@ -42,7 +42,7 @@ namespace possum {
             callback callbacks[16];
             bool dead;
             State state;
-            static bool isDead(Entity e){return e.dead;}
+            // static bool isDead(Entity& e){return e.dead;}
     };
 
 

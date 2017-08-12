@@ -10,15 +10,15 @@ void redraw_map(possum::Entity& entity, possum::State& gameState, void* data){
     sf::RenderWindow& window = *(sf::RenderWindow*)(data);
     gameState.set("mapWidth", entity.state.get("width"));
     gameState.set("mapHeight", entity.state.get("height"));
-    int startX = std::max(0, (gameState.get("tileX")/TILE_SIZE)-(TILE_WIDTH+1)/2);
-    int startY = std::max(0, (gameState.get("tileY")/TILE_SIZE)-(TILE_HEIGHT+1)/2);
-    int endX = std::min(entity.state.get("width"), startX+TILE_WIDTH);
-    int endY = std::min(entity.state.get("height"), startY+TILE_HEIGHT);
-    startX = endX - TILE_WIDTH;
-    startY = endY - TILE_HEIGHT;
-    int centerX = std::max(std::min(gameState.get("tileX"), entity.state.get("width")*TILE_SIZE-SCREEN_WIDTH/2), SCREEN_WIDTH/2);
-    int centerY = std::max(std::min(gameState.get("tileY"), entity.state.get("height")*TILE_SIZE-SCREEN_HEIGHT/2), SCREEN_HEIGHT/2);
-    // std::cout << endX << ", " << endY << ", " << gameState.get("tileX") / TILE_SIZE << ", " << gameState.get("tileY") / TILE_SIZE << std::endl;
+    int tile_width = (gameState.get("width") + TILE_SIZE - 1)/TILE_SIZE/SCALE;
+    int tile_height = (gameState.get("height") + TILE_SIZE - 1)/TILE_SIZE/SCALE;
+    int startX = std::max(0, (gameState.get("tileX")/TILE_SIZE)-(tile_width+1)/2);
+    int startY = std::max(0, (gameState.get("tileY")/TILE_SIZE)-(tile_height+1)/2);
+    int endX = std::min(entity.state.get("width"), startX+tile_width);
+    int endY = std::min(entity.state.get("height"), startY+tile_height);
+    startX = endX - tile_width;
+    startY = endY - tile_height;
+    // std::cout << startX << ", " << startY << ", " << endX << ", " << endY << ", " << gameState.get("tileX") / TILE_SIZE << ", " << gameState.get("tileY") / TILE_SIZE << std::endl;
     for (int i = startX; i <= endX; i++) {
         for (int j = startY; j <= endY; j++) {
             std::stringstream location;
@@ -27,7 +27,7 @@ void redraw_map(possum::Entity& entity, possum::State& gameState, void* data){
             int tx = tile % entity.state.get("tilesetWidth");
             int ty = tile / entity.state.get("tilesetWidth");
             entity.sprite.setTextureRect(sf::IntRect(tx*TILE_SIZE, ty*TILE_SIZE, TILE_SIZE, TILE_SIZE));
-            entity.sprite.setPosition(((TILE_SIZE*i)-centerX + SCREEN_WIDTH/2)*SCALE, ((TILE_SIZE*j)-centerY+SCREEN_HEIGHT/2)*SCALE);
+            entity.sprite.setPosition((TILE_SIZE*i)*SCALE, (TILE_SIZE*j)*SCALE);
 
             window.draw(entity.sprite);
         }

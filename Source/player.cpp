@@ -1,6 +1,7 @@
 ﻿#include "player.h"
 #include "constants.h"
 #include <string>
+#include <iostream>
 
 
 enum directions {
@@ -13,9 +14,7 @@ enum directions {
 //Event callbacks
 void redraw_player(possum::Entity& entity, possum::State& gameState, void* data){
     sf::RenderWindow& window = *(sf::RenderWindow*)(data);
-    int centerX = std::max(std::min(gameState.get("tileX"), gameState.get("mapWidth")*TILE_SIZE-SCREEN_WIDTH/2), SCREEN_WIDTH/2);
-    int centerY = std::max(std::min(gameState.get("tileY"), gameState.get("mapHeight")*TILE_SIZE-SCREEN_HEIGHT/2), SCREEN_HEIGHT/2);
-    entity.sprite.setPosition((entity.x-centerX+SCREEN_WIDTH/2)*SCALE, (entity.y-centerY+SCREEN_HEIGHT/2)*SCALE);
+    entity.sprite.setPosition(entity.x*SCALE, entity.y*SCALE);
     window.draw(entity.sprite);
 }
 
@@ -33,19 +32,22 @@ void update_player(possum::Entity& entity, possum::State& gameState, void* data)
         entity.sprite.setTextureRect(sf::IntRect(entity.state.get(prefix+"_x"), entity.state.get(prefix+"_y"), 16, 24));
         switch(entity.state.get("direction")){
             case UP:
-                entity.y -= time.asMilliseconds()/60;
+                entity.y -= time.asSeconds()*60;
                 break;
             case DOWN:
-                entity.y += time.asMilliseconds()/60;
+                entity.y += time.asSeconds()*60;
                 break;
             case LEFT:
-                entity.x -= time.asMilliseconds()/60;
+                entity.x -= time.asSeconds()*60;
                 break;
             case RIGHT:
-                entity.x += time.asMilliseconds()/60;
+                entity.x += time.asSeconds()*60;
                 break;
         }
     }
+    // std::cout << gameState.get("width") << std::endl;
+    gameState.set("x", entity.x*SCALE - gameState.get("width")/2);
+    gameState.set("y", entity.y*SCALE - gameState.get("height")/2);
 }
 
 void handle_keydown_player(possum::Entity& entity, possum::State& gameState, void* data){

@@ -5,7 +5,7 @@
 
 namespace Harley
 {
-	Tileset::Tileset(){}
+/*	Tileset::Tileset(){}
 
 	void Tileset::load (std::string location)
     {
@@ -25,6 +25,6 @@ namespace Harley
         sprite.setPosition(x*SCALE, y*SCALE);
 
         window.draw(sprite);
-    }
+    }*/
 }
 
