@@ -11,10 +11,7 @@ namespace Harley
         if (!created){
             tiles.loadFromFile("Resources/anais.png");
             tiles.setSmooth(false);
-            possum::Entity& tileset = scene.create(MAP, 0, 0, 0, tiles);
-            tileset.sprite.setScale(SCALE, SCALE);
-            tileset.sprite.setOrigin(0, 0);
-            Map::load_chunks(tileset, "Resources/beauve", 1440, 960, 3, 3);
+            Map::load_chunks(scene, tiles, "Resources/beauve", 1440, 960, 3, 3);
             player.create(scene);
             // map.load("npc_test");
         }

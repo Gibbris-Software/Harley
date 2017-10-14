@@ -1,7 +1,7 @@
 ﻿#include "player.h"
 #include "constants.h"
 #include <string>
-#include <iostream>
+#include <math.h>
 
 
 enum directions {
@@ -12,13 +12,13 @@ enum directions {
 };
 
 //Event callbacks
-void redraw_player(possum::Entity& entity, possum::State& gameState, void* data){
+void redraw_player(possum::Entity& entity, possum::Scene& scene, possum::State& gameState, void* data){
     sf::RenderWindow& window = *(sf::RenderWindow*)(data);
     entity.sprite.setPosition(entity.x*SCALE, entity.y*SCALE);
     window.draw(entity.sprite);
 }
 
-void update_player(possum::Entity& entity, possum::State& gameState, void* data){
+void update_player(possum::Entity& entity, possum::Scene& scene, possum::State& gameState, void* data){
     sf::Time time = *(sf::Time*)(data);
     gameState.set("tileX", entity.x);
     gameState.set("tileY", entity.y);
@@ -50,7 +50,7 @@ void update_player(possum::Entity& entity, possum::State& gameState, void* data)
     gameState.set("y", entity.y*SCALE - gameState.get("height")/2);
 }
 
-void handle_keydown_player(possum::Entity& entity, possum::State& gameState, void* data){
+void handle_keydown_player(possum::Entity& entity, possum::Scene& scene, possum::State& gameState, void* data){
     sf::Event::KeyEvent event = *(sf::Event::KeyEvent*)(data);
     switch (event.code){
         case sf::Keyboard::S:
@@ -74,7 +74,7 @@ void handle_keydown_player(possum::Entity& entity, possum::State& gameState, voi
     }
 }
 
-void handle_keyup_player(possum::Entity& entity, possum::State& gameState, void* data){
+void handle_keyup_player(possum::Entity& entity, possum::Scene& scene, possum::State& gameState, void* data){
     sf::Event::KeyEvent event = *(sf::Event::KeyEvent*)(data);
     switch (event.code){
         case sf::Keyboard::S:
@@ -85,6 +85,15 @@ void handle_keyup_player(possum::Entity& entity, possum::State& gameState, void*
             break;
         default:
             break;
+    }
+}
+
+void collide_player(possum::Entity& entity, possum::Scene& scene, possum::State& gameState, void* data){
+    possum::Entity& other = *(possum::Entity*)(data);
+    if (other.type == OBSTACLE){
+        float factor = pow(other.radius + entity.radius, 2)/(pow(other.x-entity.x, 2)+pow(other.y-entity.y, 2));
+        entity.x = other.x + factor * (entity.x - other.x);
+        entity.y = other.y + factor * (entity.y - other.y);
     }
 }
 
@@ -126,6 +135,7 @@ namespace Harley
         entity.register_event(possum::UPDATE, update_player);
         entity.register_event(possum::KEY_DOWN, handle_keydown_player);
         entity.register_event(possum::KEY_UP, handle_keyup_player);
+        entity.register_event(possum::COLLISION, collide_player);
         entity.state.set("moving", 0);
         entity.state.set("animationState", 0);
         entity.state.set("direction", DOWN);

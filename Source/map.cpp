@@ -6,7 +6,7 @@
 #include "constants.h"
 
 //Event callbacks
-void redraw_map(possum::Entity& entity, possum::State& gameState, void* data){
+void redraw_map(possum::Entity& entity, possum::Scene& scene, possum::State& gameState, void* data){
     sf::RenderWindow& window = *(sf::RenderWindow*)(data);
     gameState.set("mapWidth", entity.state.get("width"));
     gameState.set("mapHeight", entity.state.get("height"));
@@ -37,13 +37,16 @@ void redraw_map(possum::Entity& entity, possum::State& gameState, void* data){
 namespace Harley
 {
 
-	void Map::load_chunks(possum::Entity& entity, std::string name, int width, int height, int chunk_width, int chunk_height)
+	void Map::load_chunks(possum::Scene& scene, sf::Texture& tileset, std::string name, int width, int height, int chunk_width, int chunk_height)
     {
         std::string line;
         int chunk_x_offset = 0;
         int chunk_y_offset = 0;
         int chunk_x_increment = width / chunk_width;
         int chunk_y_increment = height / chunk_height;
+        possum::Entity& entity = scene.create(MAP, 0, 0, 0, tileset);
+        entity.sprite.setScale(SCALE, SCALE);
+        entity.sprite.setOrigin(0, 0);
         for (int chunk_x = 1; chunk_x <= chunk_width; chunk_x++){
             chunk_y_offset = 0;
             for (int chunk_y = 1; chunk_y <= chunk_height; chunk_y++){
@@ -61,6 +64,9 @@ namespace Harley
                         std::stringstream location;
                         location << chunk_y_offset + y << " " << chunk_x_offset + x;
                         entity.state.set(location.str(), i);
+                        if (i > BEGIN_OBSTACLE){
+                            scene.create(OBSTACLE, chunk_x_offset+x+TILE_SIZE/2, chunk_y_offset+y+TILE_SIZE/2, TILE_SIZE/2, tileset);
+                        }
                         x++;
                         data >> c;
                     }

@@ -24,4 +24,6 @@ enum EntityTypes {
     OBSTACLE,
 };
 
+#define BEGIN_OBSTACLE 128
+
 #endif // __CONSTANTS_H_

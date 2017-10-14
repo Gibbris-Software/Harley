@@ -11,7 +11,7 @@ namespace Harley {
         Map(){};
       public:
         static void load(possum::Entity&, std::string);
-        static void load_chunks(possum::Entity&, std::string, int, int, int, int);
+        static void load_chunks(possum::Scene&, sf::Texture&, std::string, int, int, int, int);
     };
 }
 
