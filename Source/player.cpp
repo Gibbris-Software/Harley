@@ -2,6 +2,7 @@
 #include "constants.h"
 #include <string>
 #include <math.h>
+#include <lua.h>
 
 
 enum directions {
@@ -20,17 +21,17 @@ void redraw_player(possum::Entity& entity, possum::Scene& scene, possum::State& 
 
 void update_player(possum::Entity& entity, possum::Scene& scene, possum::State& gameState, void* data){
     sf::Time time = *(sf::Time*)(data);
-    gameState.set("tileX", entity.x);
-    gameState.set("tileY", entity.y);
-    if (entity.state.get("moving") != 0){
-        int a = entity.state.get("animationState") + 1;
+    gameState["tileX"] = entity.x;
+    gameState["tileY"] = entity.y;
+    if (entity.state["moving"] != 0){
+        int a = entity.state["animationState"] + 1;
         if (a == 2){
             a = 0;
         }
-        entity.state.set("animationState", a);
-        std::string prefix = std::to_string(entity.state.get("direction"))+"_"+std::to_string(a);
-        entity.sprite.setTextureRect(sf::IntRect(entity.state.get(prefix+"_x"), entity.state.get(prefix+"_y"), 16, 24));
-        switch(entity.state.get("direction")){
+        entity.state["animationState"] = a;
+        std::string prefix = std::to_string(entity.state["direction"])+"_"+std::to_string(a);
+        entity.sprite.setTextureRect(sf::IntRect(entity.state[prefix+"_x"], entity.state[prefix+"_y"], 16, 24));
+        switch(entity.state["direction"]){
             case UP:
                 entity.y -= time.asSeconds()*60;
                 break;
@@ -46,28 +47,28 @@ void update_player(possum::Entity& entity, possum::Scene& scene, possum::State& 
         }
     }
     // std::cout << gameState.get("width") << std::endl;
-    gameState.set("x", entity.x*SCALE - gameState.get("width")/2);
-    gameState.set("y", entity.y*SCALE - gameState.get("height")/2);
+    gameState["x"] = entity.x*SCALE - gameState["width"]/2;
+    gameState["y"] = entity.y*SCALE - gameState["height"]/2;
 }
 
 void handle_keydown_player(possum::Entity& entity, possum::Scene& scene, possum::State& gameState, void* data){
     sf::Event::KeyEvent event = *(sf::Event::KeyEvent*)(data);
     switch (event.code){
         case sf::Keyboard::S:
-            entity.state.set("moving", 1);
-            entity.state.set("direction", DOWN);
+            entity.state["moving"] = 1;
+            entity.state["direction"] = DOWN;
             break;
         case sf::Keyboard::W:
-            entity.state.set("moving", 1);
-            entity.state.set("direction", UP);
+            entity.state["moving"] = 1;
+            entity.state["direction"] = UP;
             break;
         case sf::Keyboard::A:
-            entity.state.set("moving", 1);
-            entity.state.set("direction", LEFT);
+            entity.state["moving"] = 1;
+            entity.state["direction"] = LEFT;
             break;
         case sf::Keyboard::D:
-            entity.state.set("moving", 1);
-            entity.state.set("direction", RIGHT);
+            entity.state["moving"] = 1;
+            entity.state["direction"] = RIGHT;
             break;
         default:
             break;
@@ -81,7 +82,7 @@ void handle_keyup_player(possum::Entity& entity, possum::Scene& scene, possum::S
         case sf::Keyboard::A:
         case sf::Keyboard::W:
         case sf::Keyboard::D:
-            entity.state.set("moving", 0);
+            entity.state["moving"] = 0;
             break;
         default:
             break;
@@ -107,8 +108,8 @@ namespace Harley
         defence = 5;
         weight = 9;
         max_weight_load = 0;
-        tile_x = 629*TILE_SIZE;
-        tile_y = 588*TILE_SIZE;
+        tile_x = 17*TILE_SIZE;
+        tile_y = 6*TILE_SIZE;
         battle_x = 40;
         battle_y = 40;
         texture.loadFromFile("Resources/HarleyBeta.png");
@@ -126,8 +127,8 @@ namespace Harley
         //special_attack = new SpecialAttack ();
     }
 
-    void Player::create(possum::Scene& scene){
-        possum::Entity& entity = scene.create(PLAYER, tile_x, tile_y, TILE_SIZE, texture);
+    void Player::create(possum::Game& game, possum::Scene& scene){
+        possum::Entity& entity = scene.create(PLAYER, tile_x, tile_y, TILE_SIZE, game.getTexture("Resources/HarleyBeta.png"));
         entity.sprite.setScale(SCALE, SCALE);
         entity.sprite.setOrigin(8, 16);
         entity.sprite.setTextureRect(sf::IntRect(0, 0, 16, 24));
@@ -136,25 +137,25 @@ namespace Harley
         entity.register_event(possum::KEY_DOWN, handle_keydown_player);
         entity.register_event(possum::KEY_UP, handle_keyup_player);
         entity.register_event(possum::COLLISION, collide_player);
-        entity.state.set("moving", 0);
-        entity.state.set("animationState", 0);
-        entity.state.set("direction", DOWN);
-        entity.state.set(std::to_string(DOWN)+"_0_x", 0);
-        entity.state.set(std::to_string(DOWN)+"_0_y", 0);
-        entity.state.set(std::to_string(DOWN)+"_1_x", 16);
-        entity.state.set(std::to_string(DOWN)+"_1_y", 0);
-        entity.state.set(std::to_string(UP)+"_0_x", 0);
-        entity.state.set(std::to_string(UP)+"_0_y", 24);
-        entity.state.set(std::to_string(UP)+"_1_x", 16);
-        entity.state.set(std::to_string(UP)+"_1_y", 24);
-        entity.state.set(std::to_string(LEFT)+"_0_x", 32);
-        entity.state.set(std::to_string(LEFT)+"_0_y", 24);
-        entity.state.set(std::to_string(LEFT)+"_1_x", 48);
-        entity.state.set(std::to_string(LEFT)+"_1_y", 24);
-        entity.state.set(std::to_string(RIGHT)+"_0_x", 32);
-        entity.state.set(std::to_string(RIGHT)+"_0_y", 0);
-        entity.state.set(std::to_string(RIGHT)+"_1_x", 48);
-        entity.state.set(std::to_string(RIGHT)+"_1_y", 0);
+        entity.state["moving"] = 0;
+        entity.state["animationState"] = 0;
+        entity.state["direction"] = DOWN;
+        entity.state[std::to_string(DOWN)+"_0_x"] = 0;
+        entity.state[std::to_string(DOWN)+"_0_y"] = 0;
+        entity.state[std::to_string(DOWN)+"_1_x"] = 16;
+        entity.state[std::to_string(DOWN)+"_1_y"] = 0;
+        entity.state[std::to_string(UP)+"_0_x"] = 0;
+        entity.state[std::to_string(UP)+"_0_y"] = 24;
+        entity.state[std::to_string(UP)+"_1_x"] = 16;
+        entity.state[std::to_string(UP)+"_1_y"] = 24;
+        entity.state[std::to_string(LEFT)+"_0_x"] = 32;
+        entity.state[std::to_string(LEFT)+"_0_y"] = 24;
+        entity.state[std::to_string(LEFT)+"_1_x"] = 48;
+        entity.state[std::to_string(LEFT)+"_1_y"] = 24;
+        entity.state[std::to_string(RIGHT)+"_0_x"] = 32;
+        entity.state[std::to_string(RIGHT)+"_0_y"] = 0;
+        entity.state[std::to_string(RIGHT)+"_1_x"] = 48;
+        entity.state[std::to_string(RIGHT)+"_1_y"] = 0;
     }
 
 

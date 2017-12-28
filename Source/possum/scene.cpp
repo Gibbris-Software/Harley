@@ -2,7 +2,7 @@
 
 namespace possum {
     Entity& Scene::create(int type, float x, float y, float radius, sf::Texture& texture){
-        std::unique_ptr<Entity> e(new Entity(type, x, y, radius, texture));
+        std::shared_ptr<Entity> e = std::shared_ptr<Entity>(new Entity(type, x, y, radius, texture));
 //        e->type = type;
 //        e->x = x;
 //        e->y = y;
@@ -14,8 +14,7 @@ namespace possum {
 //        for (int i = 0; i < 16; i++){
 //            e->callbacks[i] = 0;
 //        }
-        entities.push_back(std::move(e));
+        entities.push_back(e);
         return *entities.back();
     }
-
 }

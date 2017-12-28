@@ -10,7 +10,7 @@ namespace Harley
 {
     Game::Game() {
         game.create(SCALE*SCREEN_WIDTH, SCALE*SCREEN_HEIGHT, "Harley");
-        overworld.setup(game);
+        littleoak.setup(game, player);
         anais.openFromFile("Resources/anais.wav");
         anais.setLoop(true);
         anais.play();

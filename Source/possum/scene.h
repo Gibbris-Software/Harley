@@ -10,10 +10,11 @@ namespace possum {
     class Scene
     {
         public:
-            Scene(): background(sf::Color(0, 0, 0, 0)){};
-            Scene(sf::Color bg): background(bg){}
+            Scene(): entities(), background(sf::Color(0, 0, 0, 0)){};
+            Scene(sf::Color bg): entities(), background(bg){}
             Entity& create(int type, float x, float y, float radius, sf::Texture& texture);
-            std::vector<std::unique_ptr<Entity> > entities;
+            void add(std::shared_ptr<Entity> entity){entities.push_back(entity);};
+            std::vector<std::shared_ptr<Entity> > entities;
             sf::Color background;
         protected:
         private:

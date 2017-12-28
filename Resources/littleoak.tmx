@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" source="anais.tsx"/>
+ <layer name="Tile Layer 1" width="20" height="15">
+  <data encoding="base64" compression="zlib">
+   eJytlNkNwkAMRPeCQAFcDZAvjgY4GuBogKP/KphIO2JkGaFI+XhaybP2WF4nJYSQQQGxnqlSqpaqliWeJM5cxjZgC3ZgX/NixWr0yI5GzwM4ghM4m3pWK9KP1dj7BVzBDdzFPzqazsDL6+IP8AQv8JZ5ZkdjD8XRGB+B8UB0fjMwHwitNwFrh+kfXSlSbxG+u6V7oTr3zNslvqGtp29o/ZJodl+iUy+KD/OsHzVvl/T+8sebrRy9Cf6eaX990Fnqt6z1+rxvK7PUf4k3b/pkR2ceNd7n+QHYJxyg
+  </data>
+ </layer>
+</map>

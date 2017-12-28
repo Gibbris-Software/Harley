@@ -6,17 +6,19 @@
 #include "possum/possum.h"
 
 #include "player.h"
-#include "overworld.h"
-#include "battle.h"
-#include "house.h"
-#include "city.h"
+#include "littleoak.h"
+//#include "overworld.h"
+//#include "battle.h"
+//#include "house.h"
+//#include "city.h"
 
 namespace Harley
 {
     class Game
     {
         sf::RenderWindow window;
-        Overworld overworld;
+        LittleOak littleoak;
+        //Overworld overworld;
         Player player;
         possum::Game game;
 

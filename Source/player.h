@@ -64,7 +64,7 @@ namespace Harley {
         void nextAnimation();
         sf::Sprite direction(int, int);
 
-        void create(possum::Scene&);
+        void create(possum::Game&, possum::Scene&);
     };
 }
 
