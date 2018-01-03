@@ -1,4 +1,4 @@
-﻿#include "player.h"
+#include "player.h"
 #include "constants.h"
 #include <string>
 #include <math.h>
@@ -13,16 +13,16 @@ enum directions {
 };
 
 //Event callbacks
-void redraw_player(possum::Entity& entity, possum::Scene& scene, possum::State& gameState, void* data){
+void redraw_player(possum::Entity& entity, possum::Scene& scene, possum::Game& game, void* data){
     sf::RenderWindow& window = *(sf::RenderWindow*)(data);
     entity.sprite.setPosition(entity.x*SCALE, entity.y*SCALE);
     window.draw(entity.sprite);
 }
 
-void update_player(possum::Entity& entity, possum::Scene& scene, possum::State& gameState, void* data){
+void update_player(possum::Entity& entity, possum::Scene& scene, possum::Game& game, void* data){
     sf::Time time = *(sf::Time*)(data);
-    gameState["tileX"] = entity.x;
-    gameState["tileY"] = entity.y;
+    game.state["tileX"] = entity.x;
+    game.state["tileY"] = entity.y;
     if (entity.state["moving"] != 0){
         int a = entity.state["animationState"] + 1;
         if (a == 2){
@@ -47,11 +47,11 @@ void update_player(possum::Entity& entity, possum::Scene& scene, possum::State& 
         }
     }
     // std::cout << gameState.get("width") << std::endl;
-    gameState["x"] = entity.x*SCALE - gameState["width"]/2;
-    gameState["y"] = entity.y*SCALE - gameState["height"]/2;
+    game.state["x"] = entity.x*SCALE - game.state["width"]/2;
+    game.state["y"] = entity.y*SCALE - game.state["height"]/2;
 }
 
-void handle_keydown_player(possum::Entity& entity, possum::Scene& scene, possum::State& gameState, void* data){
+void handle_keydown_player(possum::Entity& entity, possum::Scene& scene, possum::Game& game, void* data){
     sf::Event::KeyEvent event = *(sf::Event::KeyEvent*)(data);
     switch (event.code){
         case sf::Keyboard::S:
@@ -75,7 +75,7 @@ void handle_keydown_player(possum::Entity& entity, possum::Scene& scene, possum:
     }
 }
 
-void handle_keyup_player(possum::Entity& entity, possum::Scene& scene, possum::State& gameState, void* data){
+void handle_keyup_player(possum::Entity& entity, possum::Scene& scene, possum::Game& game, void* data){
     sf::Event::KeyEvent event = *(sf::Event::KeyEvent*)(data);
     switch (event.code){
         case sf::Keyboard::S:
@@ -89,7 +89,7 @@ void handle_keyup_player(possum::Entity& entity, possum::Scene& scene, possum::S
     }
 }
 
-void collide_player(possum::Entity& entity, possum::Scene& scene, possum::State& gameState, void* data){
+void collide_player(possum::Entity& entity, possum::Scene& scene, possum::Game& game, void* data){
     possum::Entity& other = *(possum::Entity*)(data);
     if (other.type == OBSTACLE){
         float factor = pow(other.radius + entity.radius, 2)/(pow(other.x-entity.x, 2)+pow(other.y-entity.y, 2));

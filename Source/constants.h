@@ -22,8 +22,12 @@ enum EntityTypes {
     ENEMY,
     NPC,
     OBSTACLE,
+    DIALOGUE,
 };
 
 #define BEGIN_OBSTACLE 128
+
+#define PAUSE USER_EVENT_1
+#define UNPAUSE USER_EVENT_2
 
 #endif // __CONSTANTS_H_

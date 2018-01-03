@@ -1,4 +1,4 @@
-﻿#include <string>
+#include <string>
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -6,19 +6,19 @@
 #include "constants.h"
 
 //Event callbacks
-void redraw_map(possum::Entity& entity, possum::Scene& scene, possum::State& gameState, void* data){
+void redraw_map(possum::Entity& entity, possum::Scene& scene, possum::Game& game, void* data){
     sf::RenderWindow& window = *(sf::RenderWindow*)(data);
-    gameState["mapWidth"] = entity.state["width"];
-    gameState["mapHeight"] = entity.state["height"];
-    int tile_width = (gameState["width"] + TILE_SIZE - 1)/TILE_SIZE/SCALE;
-    int tile_height = (gameState["height"] + TILE_SIZE - 1)/TILE_SIZE/SCALE;
-    int startX = std::max(0, (gameState["tileX"]/TILE_SIZE)-(tile_width+1)/2);
-    int startY = std::max(0, (gameState["tileY"]/TILE_SIZE)-(tile_height+1)/2);
+    game.state["mapWidth"] = entity.state["width"];
+    game.state["mapHeight"] = entity.state["height"];
+    int tile_width = (game.state["width"] + TILE_SIZE - 1)/TILE_SIZE/SCALE;
+    int tile_height = (game.state["height"] + TILE_SIZE - 1)/TILE_SIZE/SCALE;
+    int startX = std::max(0, (game.state["tileX"]/TILE_SIZE)-(tile_width+1)/2);
+    int startY = std::max(0, (game.state["tileY"]/TILE_SIZE)-(tile_height+1)/2);
     int endX = std::min(entity.state["width"], startX+tile_width);
     int endY = std::min(entity.state["height"], startY+tile_height);
     startX = endX - tile_width;
     startY = endY - tile_height;
-    // std::cout << startX << ", " << startY << ", " << endX << ", " << endY << ", " << gameState.get("tileX") / TILE_SIZE << ", " << gameState.get("tileY") / TILE_SIZE << std::endl;
+    // std::cout << startX << ", " << startY << ", " << endX << ", " << endY << ", " << game.state.get("tileX") / TILE_SIZE << ", " << game.state.get("tileY") / TILE_SIZE << std::endl;
     for (int i = startX; i <= endX; i++) {
         for (int j = startY; j <= endY; j++) {
             std::stringstream location;
