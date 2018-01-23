@@ -6,7 +6,7 @@
 #include "possum/possum.h"
 
 #include "player.h"
-#include "littleoak.h"
+#include "littleoak/littleoak.h"
 //#include "overworld.h"
 //#include "battle.h"
 //#include "house.h"

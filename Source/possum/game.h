@@ -18,6 +18,7 @@ namespace possum {
             void create(int width, int height, std::string title);
             virtual ~Game();
             void run();
+            void quit();
             void setScene(int nextScene) { state["scene"] = nextScene; };
             std::shared_ptr<Scene> newScene() { scenes.push_back(std::shared_ptr<Scene>(new Scene())); return scenes.back();};
             int numScenes(){return scenes.size();};

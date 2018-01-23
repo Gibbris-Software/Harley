@@ -87,6 +87,10 @@ namespace possum {
         }
     }
 
+    void Game::quit() {
+        window.close();
+    }
+
     sf::Texture& Game::getTexture(std::string filename){
         if (textures.find(filename) != textures.end()){
             return textures.find(filename)->second;

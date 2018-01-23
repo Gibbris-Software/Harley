@@ -1,10 +1,13 @@
 ODIR=../obj
 
-_OBJ = game.o littleoak.o main.o map.o player.o tile.o possum/game.o possum/scene.o
+_OBJ = harley/game.o littleoak/littleoak.o harley/main.o harley/map.o harley/player.o harley/tile.o possum/game.o possum/scene.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
-$(ODIR)/%.o: %.cpp
-	g++ -g -c -o $@ $<
+$(ODIR)/harley/%.o: harley/%.cpp
+	g++ -g -c -o $@ $< -I.
+
+$(ODIR)/littleoak/%.o: littleoak/%.cpp
+	g++ -g -c -o $@ $< -I.
 
 .PHONY: harley clean
 

@@ -34,6 +34,13 @@ void redraw_map(possum::Entity& entity, possum::Scene& scene, possum::Game& game
     }
 }
 
+void keydown_map(possum::Entity& entity, possum::Scene& scene, possum::Game& game, void* data){
+    sf::Event::KeyEvent& event = *(sf::Event::KeyEvent*)(data);
+    if (event.code == sf::Keyboard::Escape){
+        game.quit();
+    }
+}
+
 namespace Harley
 {
 
@@ -80,6 +87,7 @@ namespace Harley
         entity.state["height"] = height;
         entity.state["tilesetWidth"] = entity.texture.getSize().x/TILE_SIZE;
         entity.register_event(possum::REDRAW, redraw_map);
+        entity.register_event(possum::KEY_DOWN, keydown_map);
     }
 
     void Map::load(possum::Entity& entity, std::string name){
@@ -107,6 +115,7 @@ namespace Harley
         entity.state["height"] = y-1;
         entity.state["tilesetWidth"] = entity.texture.getSize().x/TILE_SIZE;
         entity.register_event(possum::REDRAW, redraw_map);
+        entity.register_event(possum::KEY_DOWN, keydown_map);
     }
 
 }

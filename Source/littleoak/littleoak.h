@@ -2,8 +2,8 @@
 #define HARLEY_LITTLEOAK
 
 #include "possum/possum.h"
-#include "sfml.h"
-#include "player.h"
+#include "harley/sfml.h"
+#include "harley/player.h"
 
 namespace Harley {
     class LittleOak {
