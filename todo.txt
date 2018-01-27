@@ -1,0 +1,9 @@
+* Make dialog boxes disappear eventually
+* Add responses to dialog
+* Draw sprites for characters
+* Make better houses
+* Add battles
+* Add enemies
+* Add player stats
+* Add more things to do
+
